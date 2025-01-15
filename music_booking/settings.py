@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-o_mnuq5r(*vn5@nx!08f+z0zn6+jor26pg^k)az-3(jo_3_%)&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["localhost", "https://music-match-483fb192c3d8.herokuapp.com/"]
 
 CSRF_TRUSTED_ORIGINS = ['https://*.codeinstitute-ide.net', 'https://*.herokuapp.com']
 
