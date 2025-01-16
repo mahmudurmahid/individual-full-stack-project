@@ -16,6 +16,9 @@ def event_list(request):
     events = Event.objects.all().order_by('date')
     return render(request, 'event_list.html', {'events': events})
 
+def register(request):
+    return render(request, 'register.html')
+
 @login_required
 def create_event(request):
     if request.method == 'POST':
