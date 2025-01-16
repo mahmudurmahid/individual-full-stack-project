@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from .forms import RegisterForm, EventForm
-from .models import Event, Booking
+from .models import Event, Booking, Profile
 
 # Create your views here
 # Homepage View
@@ -34,6 +34,11 @@ def register(request):
 # Event Creation View (Event Holders Only)
 @login_required
 def create_event(request):
+    # Ensure user has a profile
+    if not hasattr(request.user, 'profile'):
+        Profile.objects.create(user=request.user)
+
+    # Only event holders can create events
     if request.user.profile.role != 'event_holder':
         return HttpResponseForbidden("Only event holders can create events.")
 
