@@ -28,3 +28,9 @@ def create_event(request):
     else:
         form = EventForm()
     return render(request, 'create_event.html', {'form': form})
+
+@login_required
+def book_event(request, event_id):
+    event = Event.objects.get(id=event_id)
+    Booking.objects.create(user=request.user, event=event)
+    return render(request, 'booking_confirmed.html', {'event': event})
