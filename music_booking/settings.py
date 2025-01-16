@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEBUG' in os.environ
 
-ALLOWED_HOSTS = ["localhost", "https://music-match-483fb192c3d8.herokuapp.com/", "music-match-483fb192c3d8.herokuapp.com"]
+ALLOWED_HOSTS = ["localhost", "music-match-483fb192c3d8.herokuapp.com"]
 
 CSRF_TRUSTED_ORIGINS = ['https://*.codeinstitute-ide.net', 'https://*.herokuapp.com']
 
