@@ -57,5 +57,10 @@ def create_event(request):
 @login_required
 def book_event(request, event_id):
     event = get_object_or_404(Event, id=event_id)
+    
+    # Prevent duplicate bookings
+    if Booking.objects.filter(user=request.user, event=event).exists():
+        return render(request, 'booking_confirmed.html', {'event': event, 'message': 'You have already booked this event.'})
+
     Booking.objects.create(user=request.user, event=event)
-    return render(request, 'booking_confirmed.html', {'event': event})
+    return render(request, 'booking_confirmed.html', {'event': event, 'message': 'Your booking was successful!'})
