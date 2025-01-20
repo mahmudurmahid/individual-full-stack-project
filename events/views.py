@@ -70,3 +70,10 @@ def book_event(request, event_id):
         return render(request, 'booking_confirmed.html', {'event': event, 'ticket_count': ticket_count})
 
     return render(request, 'book_event.html', {'event': event})
+
+
+# Booking Listing View
+@login_required
+def booked_events(request):
+    bookings = Booking.objects.filter(user=request.user).select_related('event')
+    return render(request, 'booked_events.html', {'bookings': bookings})

@@ -1,3 +1,25 @@
-h1 {
-  color: red;
+body {
+  background-color: #f8f9fa;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.hero {
+  background-image: url("https://source.unsplash.com/1600x900/?concert,music");
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+.hero h1 {
+  font-size: 4rem;
+}
+.btn-custom {
+  background-color: #ff4081;
+  border: none;
+}
+.btn-custom:hover {
+  background-color: #e73370;
 }
