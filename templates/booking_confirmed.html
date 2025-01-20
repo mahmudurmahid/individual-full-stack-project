@@ -11,15 +11,10 @@
   <body>
     <div class="container mt-5">
       <h2>Booking Confirmed!</h2>
-
-      <!-- Confirmation message -->
-      <p>You have successfully booked a ticket for {{ event.title }}.</p>
-
-      <!-- Dynamic message for duplicate or successful booking -->
-      {% if message %}
-      <div class="alert alert-info" role="alert">{{ message }}</div>
-      {% endif %}
-
+      <p>
+        You have successfully booked {{ ticket_count }} ticket(s) for {{
+        event.title }}.
+      </p>
       <a href="{% url 'event_list' %}" class="btn btn-primary"
         >Back to Events</a
       >

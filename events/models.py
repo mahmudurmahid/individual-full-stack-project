@@ -15,13 +15,15 @@ class Event(models.Model):
     def __str__(self):
         return self.title
 
+
 class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    event = models.ForeignKey('Event', on_delete=models.CASCADE)
     booked_on = models.DateTimeField(auto_now_add=True)
+    ticket_count = models.PositiveIntegerField(default=1)  # Default is 1 ticket
 
     def __str__(self):
-        return f"{self.user.username} - {self.event.title}"
+        return f"{self.user.username} - {self.event.title} ({self.ticket_count} tickets)"
 
 class Profile(models.Model):
     USER_ROLES = (

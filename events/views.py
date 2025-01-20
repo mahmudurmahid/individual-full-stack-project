@@ -57,10 +57,16 @@ def create_event(request):
 @login_required
 def book_event(request, event_id):
     event = get_object_or_404(Event, id=event_id)
-    
-    # Prevent duplicate bookings
-    if Booking.objects.filter(user=request.user, event=event).exists():
-        return render(request, 'booking_confirmed.html', {'event': event, 'message': 'You have already booked this event.'})
 
-    Booking.objects.create(user=request.user, event=event)
-    return render(request, 'booking_confirmed.html', {'event': event, 'message': 'Your booking was successful!'})
+    if request.method == 'POST':
+        ticket_count = int(request.POST.get('ticket_count', 1))
+        if ticket_count < 1 or ticket_count > 5:
+            return HttpResponseBadRequest("You can only book between 1 and 5 tickets.")
+
+        booking, created = Booking.objects.get_or_create(user=request.user, event=event)
+        booking.ticket_count = ticket_count
+        booking.save()
+
+        return render(request, 'booking_confirmed.html', {'event': event, 'ticket_count': ticket_count})
+
+    return render(request, 'book_event.html', {'event': event})
