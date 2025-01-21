@@ -34,12 +34,7 @@ def register(request):
 # Event Creation View (Event Holders Only)
 @login_required
 def create_event(request):
-    # Ensure user has a profile
-    if not hasattr(request.user, 'profile'):
-        Profile.objects.create(user=request.user)
-
-    # Only event holders can create events
-    if request.user.profile.role != 'event_holder':
+    if not hasattr(request.user, 'profile') or request.user.profile.role != 'event_holder':
         return HttpResponseForbidden("Only event holders can create events.")
 
     if request.method == 'POST':
@@ -51,6 +46,7 @@ def create_event(request):
             return redirect('event_list')
     else:
         form = EventForm()
+
     return render(request, 'create_event.html', {'form': form})
 
 # Ticket Booking View

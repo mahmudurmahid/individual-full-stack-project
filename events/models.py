@@ -6,14 +6,24 @@ from django.dispatch import receiver
 
 # Create your models here.
 class Event(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.TextField()
-    date = models.DateTimeField()
-    venue = models.CharField(max_length=200)
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    MUSIC_GENRES = [
+        ('rock', 'Rock'),
+        ('pop', 'Pop'),
+        ('hip_hop', 'Hip-Hop'),
+        ('jazz', 'Jazz'),
+        ('classical', 'Classical'),
+        ('electronic', 'Electronic'),
+        ('country', 'Country'),
+        ('reggae', 'Reggae'),
+    ]
 
-    def __str__(self):
-        return self.title
+    title = models.CharField(max_length=200)
+    bio = models.TextField()
+    venue = models.CharField(max_length=200)
+    location = models.CharField(max_length=200)
+    date = models.DateTimeField()
+    music_genre = models.CharField(max_length=50, choices=MUSIC_GENRES)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class Booking(models.Model):
@@ -25,22 +35,31 @@ class Booking(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.event.title} ({self.ticket_count} tickets)"
 
+
 class Profile(models.Model):
     USER_ROLES = (
         ('customer', 'Customer'),
         ('event_holder', 'Event Holder'),
     )
-    
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     role = models.CharField(max_length=20, choices=USER_ROLES, default='customer')
+    first_name = models.CharField(max_length=30, blank=True, null=True)
+    last_name = models.CharField(max_length=30, blank=True, null=True)
+    venue_name = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
-        return f"{self.user.username} - {self.role}"
+        if self.role == 'customer':
+            return f"{self.first_name} {self.last_name} - {self.role}"
+        elif self.role == 'event_holder':
+            return f"{self.venue_name} - {self.role}"
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
+
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
