@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseForbidden
-from .forms import RegisterForm, EventForm
+from django.http import HttpResponseForbidden, HttpResponseBadRequest
+from .forms import RegisterForm, EventForm, CustomLoginForm
 from .models import Event, Booking, Profile
+from django.contrib.auth.views import LoginView
 
 # Create your views here
 # Homepage View
@@ -42,7 +43,6 @@ def event_list(request):
         'cities': sorted(cities),  # Sorted list of cities
     })
 
-
 # User Registration View
 def register(request):
     if request.method == 'POST':
@@ -72,6 +72,11 @@ def create_event(request):
         form = EventForm()
 
     return render(request, 'create_event.html', {'form': form})
+
+# Custom Login View
+class CustomLoginView(LoginView):
+    template_name = 'login.html'
+    authentication_form = CustomLoginForm
 
 # Ticket Booking View
 @login_required

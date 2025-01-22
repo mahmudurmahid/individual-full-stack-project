@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from .models import Event, Profile
 import re
@@ -27,6 +27,16 @@ class RegisterForm(UserCreationForm):
             profile.role = self.cleaned_data['role']
             profile.save()
         return user
+
+class CustomLoginForm(AuthenticationForm):
+    username = forms.EmailField(
+        label="Email",
+        widget=forms.EmailInput(attrs={"class": "form-control", "placeholder": "Enter your email"}),
+    )
+    password = forms.CharField(
+        label="Password",
+        widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "Enter your password"}),
+    )
 
 class EventForm(forms.ModelForm):
     class Meta:
