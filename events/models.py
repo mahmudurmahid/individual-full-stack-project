@@ -15,12 +15,13 @@ class Event(models.Model):
         ('electronic', 'Electronic'),
         ('country', 'Country'),
         ('reggae', 'Reggae'),
+        # Add further genres here
     ]
 
     title = models.CharField(max_length=200)
     bio = models.TextField()
     venue = models.CharField(max_length=200)
-    location = models.CharField(max_length=200)
+    address = models.TextField(blank=False)
     date = models.DateTimeField()
     music_genre = models.CharField(max_length=50, choices=MUSIC_GENRES)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
