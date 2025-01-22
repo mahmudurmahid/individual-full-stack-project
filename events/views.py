@@ -51,7 +51,8 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
+            backend_path = 'django.contrib.auth.backends.ModelBackend'  # Specify the backend explicitly
+            login(request, user, backend=backend_path)
             return redirect('home')
         else:
             # Include error messages in the context if form validation fails
