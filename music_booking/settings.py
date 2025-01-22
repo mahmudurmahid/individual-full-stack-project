@@ -132,7 +132,7 @@ EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 
 # Login autehntication backends
 AUTHENTICATION_BACKENDS = [
+    'music_booking.backends.CustomAuthBackend',
     'django.contrib.auth.backends.ModelBackend',
-    'django.contrib.auth.backends.AllowAllUsersModelBackend',
-    'your_app.backends.EmailAuthBackend',
 ]
+
