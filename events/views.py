@@ -16,8 +16,32 @@ class HomePage(TemplateView):
 
 # Event Listing View
 def event_list(request):
-    events = Event.objects.all().order_by('date')
-    return render(request, 'event_list.html', {'events': events})
+    events = Event.objects.all()
+
+    # Get filter criteria from query parameters
+    music_genre = request.GET.get('music_genre')
+    city = request.GET.get('city')
+    date = request.GET.get('date')
+
+    # Apply filters if criteria are provided
+    if music_genre:
+        events = events.filter(music_genre=music_genre)
+    if city:
+        events = events.filter(address__icontains=city)
+    if date:
+        events = events.filter(date__date=date)  # Match only the date part
+
+    # Get unique genres and cities for filter dropdowns
+    genres = Event.objects.values_list('music_genre', flat=True).distinct()
+    cities = Event.objects.values_list('address', flat=True)
+    cities = {addr.split(',')[-2].strip() for addr in cities}  # Extract cities from addresses
+
+    return render(request, 'event_list.html', {
+        'events': events,
+        'genres': genres,
+        'cities': sorted(cities),  # Sorted list of cities
+    })
+
 
 # User Registration View
 def register(request):
