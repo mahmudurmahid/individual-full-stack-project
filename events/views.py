@@ -3,17 +3,18 @@ from django.contrib.auth import login, authenticate
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden, HttpResponseBadRequest
+from django.contrib.auth.views import LoginView
 from .forms import RegisterForm, EventForm, CustomLoginForm
 from .models import Event, Booking, Profile
-from django.contrib.auth.views import LoginView
 
-# Create your views here
+
 # Homepage View
 class HomePage(TemplateView):
     """
     Displays home page
     """
     template_name = 'index.html'
+
 
 # Event Listing View
 def event_list(request):
@@ -43,6 +44,7 @@ def event_list(request):
         'cities': sorted(cities),  # Sorted list of cities
     })
 
+
 # User Registration View
 def register(request):
     if request.method == 'POST':
@@ -51,9 +53,22 @@ def register(request):
             user = form.save()
             login(request, user)
             return redirect('home')
+        else:
+            # Include error messages in the context if form validation fails
+            return render(request, 'register.html', {'form': form, 'errors': form.errors})
     else:
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
+
+
+
+# Custom Login View
+class CustomLoginView(LoginView):
+    template_name = 'login.html'
+    authentication_form = CustomLoginForm
+    redirect_authenticated_user = True
+    next_page = 'index.html'
+
 
 # Event Creation View (Event Holders Only)
 @login_required
@@ -73,10 +88,6 @@ def create_event(request):
 
     return render(request, 'create_event.html', {'form': form})
 
-# Custom Login View
-class CustomLoginView(LoginView):
-    template_name = 'login.html'
-    authentication_form = CustomLoginForm
 
 # Ticket Booking View
 @login_required

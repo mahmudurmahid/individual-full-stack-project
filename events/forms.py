@@ -1,6 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render
 from .models import Event, Profile
 import re
 
@@ -29,14 +32,16 @@ class RegisterForm(UserCreationForm):
         return user
 
 class CustomLoginForm(AuthenticationForm):
-    username = forms.EmailField(
-        label="Email",
-        widget=forms.EmailInput(attrs={"class": "form-control", "placeholder": "Enter your email"}),
-    )
-    password = forms.CharField(
-        label="Password",
-        widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "Enter your password"}),
-    )
+    username = forms.EmailField(label='Email', max_length=255)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        email = cleaned_data.get('username')
+        password = cleaned_data.get('password')
+
+        if not email or not password:
+            raise forms.ValidationError("Please enter both email and password.")
+        return cleaned_data
 
 class EventForm(forms.ModelForm):
     class Meta:
