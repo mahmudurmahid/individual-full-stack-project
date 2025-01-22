@@ -10,11 +10,19 @@
   </head>
   <body>
     <div class="container mt-5">
-      <h2>Booking Confirmed!</h2>
+      <h1>Booking Confirmed!</h1>
       <p>
-        You have successfully booked {{ ticket_count }} ticket(s) for {{
-        event.title }}.
+        You have successfully booked
+        <strong>{{ ticket_count }}</strong> ticket(s) for:
+        <strong>{{ event.title }}</strong>.
       </p>
+      <p>Event Details:</p>
+      <ul>
+        <li><strong>Date:</strong> {{ event.date }}</li>
+        <li><strong>Venue:</strong> {{ event.venue }}</li>
+        <li><strong>Address:</strong> {{ event.address }}</li>
+        <li><strong>Genre:</strong> {{ event.music_genre }}</li>
+      </ul>
       <a href="{% url 'event_list' %}" class="btn btn-primary"
         >Back to Events</a
       >
