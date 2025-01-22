@@ -1,11 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView
-from django.contrib.auth import authenticate, login
-from django.shortcuts import render
 from .models import Event, Profile
 import re
+
 
 class RegisterForm(UserCreationForm):
     ROLE_CHOICES = (
@@ -31,8 +29,9 @@ class RegisterForm(UserCreationForm):
             profile.save()
         return user
 
+
 class CustomLoginForm(AuthenticationForm):
-    username = forms.EmailField(label='Email', max_length=255)
+    username = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-control'}))
 
     def clean(self):
         cleaned_data = super().clean()
@@ -41,7 +40,15 @@ class CustomLoginForm(AuthenticationForm):
 
         if not email or not password:
             raise forms.ValidationError("Please enter both email and password.")
+
+        if not User.objects.filter(email=email).exists():
+            raise forms.ValidationError("No account found with this email.")
+
+        user = authenticate(username=email, password=password)
+        if not user:
+            raise forms.ValidationError("Invalid credentials. Please try again.")
         return cleaned_data
+
 
 class EventForm(forms.ModelForm):
     class Meta:
@@ -50,13 +57,11 @@ class EventForm(forms.ModelForm):
 
     def clean_address(self):
         address = self.cleaned_data.get('address')
-        # Define a regex pattern for validating UK-style addresses
         pattern = r'^\d+\s\w+(?:\s\w+)*\s\w+(?:\s\w+)*\s[A-Z]{1,2}\d{1,2}\s?\d[A-Z]{2}$'
-        
+
         if not re.match(pattern, address):
             raise forms.ValidationError(
                 "Please enter a valid address in the format: '3 Abbey Road London NW8 9AY'"
             )
-        
-        return address
 
+        return address

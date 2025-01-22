@@ -61,19 +61,19 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 
-
 # Custom Login View
 class CustomLoginView(LoginView):
     template_name = 'login.html'
     authentication_form = CustomLoginForm
     redirect_authenticated_user = True
-    next_page = 'index.html'
+    next_page = '/'
 
 
 # Event Creation View (Event Holders Only)
 @login_required
 def create_event(request):
     if not hasattr(request.user, 'profile') or request.user.profile.role != 'event_holder':
+        # Ensure only users with the "event_holder" role can create events
         return HttpResponseForbidden("Only event holders can create events.")
 
     if request.method == 'POST':
@@ -92,11 +92,13 @@ def create_event(request):
 # Ticket Booking View
 @login_required
 def book_event(request, event_id):
+    # Retrieve the specific event to book
     event = get_object_or_404(Event, id=event_id)
 
     if request.method == 'POST':
         ticket_count = int(request.POST.get('ticket_count', 1))
         if ticket_count < 1 or ticket_count > 5:
+            # Restrict ticket booking to between 1 and 5 tickets
             return HttpResponseBadRequest("You can only book between 1 and 5 tickets.")
 
         booking, created = Booking.objects.get_or_create(user=request.user, event=event)
@@ -111,5 +113,6 @@ def book_event(request, event_id):
 # Booking Listing View
 @login_required
 def booked_events(request):
+    # Retrieve all bookings made by the logged-in user
     bookings = Booking.objects.filter(user=request.user).select_related('event')
     return render(request, 'booked_events.html', {'bookings': bookings})
