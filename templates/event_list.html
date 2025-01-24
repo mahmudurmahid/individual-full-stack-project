@@ -9,8 +9,11 @@
       rel="stylesheet"
     />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-      <!-- Custom CSS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
     <link href="static/css/style.css" rel="stylesheet" />
   </head>
   <body>
@@ -25,9 +28,12 @@
             <select id="music_genre" name="music_genre" class="form-select">
               <option value="">All Genres</option>
               {% for g in genres %}
-                <option value="{{ g }}" {% if request.GET.music_genre == g %}selected{% endif %}>
-                  {{ g }}
-                </option>
+              <option
+                value="{{ g }}"
+                {% if request.GET.music_genre == g %}selected{% endif %}
+              >
+                {{ g }}
+              </option>
               {% endfor %}
             </select>
           </div>
@@ -36,16 +42,24 @@
             <select id="city" name="city" class="form-select">
               <option value="">All Cities</option>
               {% for c in cities %}
-                <option value="{{ c }}" {% if request.GET.city == c %}selected{% endif %}>
-                  {{ c }}
-                </option>
+              <option
+                value="{{ c }}"
+                {% if request.GET.city == c %}selected{% endif %}
+              >
+                {{ c }}
+              </option>
               {% endfor %}
             </select>
           </div>
           <div class="col-md-4">
             <label for="date" class="form-label">Date</label>
-            <input type="date" id="date" name="date" class="form-control"
-                   value="{{ request.GET.date|default_if_none:'' }}">
+            <input
+              type="date"
+              id="date"
+              name="date"
+              class="form-control"
+              value="{{ request.GET.date|default_if_none:'' }}"
+            />
           </div>
         </div>
         <button type="submit" class="btn btn-primary mt-3">Filter</button>
@@ -53,27 +67,29 @@
 
       <!-- Events List -->
       {% if events %}
-        {% for event in events %}
-          <div class="card mb-3">
-            <div class="card-body">
-              <h3 class="card-title">{{ event.title }}</h3>
-              <p class="card-text">{{ event.bio }}</p>
-              <p class="card-text"><strong>Date:</strong> {{ event.date }}</p>
-              <p class="card-text"><strong>Venue:</strong> {{ event.venue }}</p>
-              <p class="card-text"><strong>Address:</strong> {{ event.address }}</p>
-              <p class="card-text"><strong>Genre:</strong> {{ event.music_genre }}</p>
-              <a href="{% url 'book_event' event.id %}" class="btn btn-primary">Book Now</a>
-            </div>
-          </div>
-        {% endfor %}
+      {% for event in events %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h3 class="card-title">{{ event.title }}</h3>
+          <p class="card-text">{{ event.bio }}</p>
+          <p class="card-text"><strong>Date:</strong> {{ event.date }}</p>
+          <p class="card-text"><strong>Venue:</strong> {{ event.venue }}</p>
+          <p class="card-text"><strong>Address:</strong> {{ event.address }}</p>
+          <p class="card-text"><strong>Genre:</strong> {{ event.music_genre }}</p>
+          <a href="{% url 'book_event' event.id %}" class="btn btn-primary"
+            >Book Now</a
+          >
+        </div>
+      </div>
+      {% endfor %}
       {% else %}
-        <p>No upcoming events found. Try adjusting your filters.</p>
+      <p>No upcoming events found. Try adjusting your filters.</p>
       {% endif %}
     </div>
 
-            <!-- Bootstrap CSS -->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-            <!-- Custom JavaScript-->
-            <script src="static/js/script.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="static/js/script.js"></script>
   </body>
 </html>

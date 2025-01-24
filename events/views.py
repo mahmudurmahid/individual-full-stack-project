@@ -79,6 +79,28 @@ def event_list(request):
     })
 
 
+@login_required
+def book_event(request, event_id):
+    """
+    Allows customers to book an event.
+    """
+    if request.user.profile.role != 'customer':
+        return HttpResponseForbidden("Only customers can book events.")
+
+    event = get_object_or_404(Event, id=event_id)
+    booking, created = Booking.objects.get_or_create(user=request.user, event=event)
+    if created:
+        booking.ticket_count = 1  # Default ticket count (can be customized)
+        booking.save()
+    return redirect('my_bookings')
+
+
+@login_required
+def booked_events(request):
+    bookings = Booking.objects.filter(user=request.user)
+    return render(request, 'booked_events.html', {'bookings': bookings})
+
+
 def register(request):
     """
     Handles user registration.
@@ -118,13 +140,22 @@ def create_event(request):
             event = form.save(commit=False)
             event.created_by = request.user
             event.save()
-            return redirect('event_holder_home')
+            return redirect('my_events')  # Redirect to "my events" page
+        else:
+            print(form.errors)  # Debug: Print form errors in the console
     else:
         form = EventForm()
 
     return render(request, 'create_event.html', {'form': form})
 
+
 @login_required
-def booked_events(request):
-    bookings = Booking.objects.filter(user=request.user)
-    return render(request, 'booked_events.html', {'bookings': bookings})
+def my_events(request):
+    """
+    Displays the list of events created by the logged-in event holder.
+    """
+    if not hasattr(request.user, 'profile') or request.user.profile.role != 'event_holder':
+        return HttpResponseForbidden("Only event holders can access this page.")
+
+    my_events = Event.objects.filter(created_by=request.user)
+    return render(request, 'my_events.html', {'my_events': my_events})

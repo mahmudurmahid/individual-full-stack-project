@@ -52,12 +52,17 @@ class EventForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = ['title', 'bio', 'venue', 'address', 'date', 'music_genre']
+        widgets = {
+            'date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+        }
 
     def clean_address(self):
         address = self.cleaned_data.get('address')
-        pattern = r'^\d+\s[\w\s]+,\s[\w\s]+,\s[A-Z]{1,2}\d{1,2}\s?\d[A-Z]{2}$'
+        # Example address validation regex for UK postcodes
+        pattern = r'^\d+\s\w+(?:\s\w+)*,\s*\w+(?:\s\w+)*,\s[A-Z]{1,2}\d{1,2}\s?\d[A-Z]{2}$'
+
         if not re.match(pattern, address):
             raise forms.ValidationError(
-                "Please enter a valid address in the format: '123 Street Name, City, AB1 2CD'"
+                "Please enter a valid address in the format: '84 John Street, Sheffield, S13 5JG'"
             )
         return address

@@ -15,7 +15,7 @@ class Event(models.Model):
         ('electronic', 'Electronic'),
         ('country', 'Country'),
         ('reggae', 'Reggae'),
-        # Add further genres here
+        # Add more genres here
     ]
 
     title = models.CharField(max_length=200)
@@ -23,8 +23,11 @@ class Event(models.Model):
     venue = models.CharField(max_length=200)
     address = models.TextField(blank=False)
     date = models.DateTimeField()
-    music_genre = models.CharField(max_length=50, choices=MUSIC_GENRES)
+    music_genre = models.CharField(max_length=50, choices=MUSIC_GENRES, verbose_name="Music Genre")
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
 
 
 class Booking(models.Model):

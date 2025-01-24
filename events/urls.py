@@ -10,6 +10,8 @@ urlpatterns = [
     path('login/', views.CustomLoginView.as_view(), name='login'),  # Custom login view
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),  # Logout page
     path('events/', views.event_list, name='event_list'),  # Upcoming events (customers only)
+    path('book/<int:event_id>/', views.book_event, name='book_event'),  # Book an event (customers only)
     path('create/', views.create_event, name='create_event'),  # Create an event (event holders only)
     path('my-bookings/', views.booked_events, name='my_bookings'),  # Customer's bookings
+      path('my-events/', views.my_events, name='my_events'),  # Event holder's events
 ]
