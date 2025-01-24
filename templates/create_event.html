@@ -24,22 +24,22 @@
 
         <div class="mb-3">
           <label for="id_title" class="form-label">Event Title</label>
-          {{ form.title|add_class:"form-control" }}
+          {{ form.title }}
         </div>
 
         <div class="mb-3">
           <label for="id_bio" class="form-label">Bio</label>
-          {{ form.bio|add_class:"form-control" }}
+          {{ form.bio }}
         </div>
 
         <div class="mb-3">
           <label for="id_venue" class="form-label">Venue</label>
-          {{ form.venue|add_class:"form-control" }}
+          {{ form.venue }}
         </div>
 
         <div class="mb-3">
           <label for="id_address" class="form-label">Address</label>
-          {{ form.address|add_class:"form-control" }}
+          {{ form.address }}
           <small class="form-text text-muted"
             >Enter a full address, e.g., 84 John Street, Sheffield, S13
             5JG.</small
@@ -48,12 +48,12 @@
 
         <div class="mb-3">
           <label for="id_date" class="form-label">Date</label>
-          {{ form.date|add_class:"form-control" }}
+          {{ form.date }}
         </div>
 
         <div class="mb-3">
           <label for="id_music_genre" class="form-label">Music Genre</label>
-          {{ form.music_genre|add_class:"form-select" }}
+          {{ form.music_genre }}
         </div>
 
         <button type="submit" class="btn btn-primary">Create Event</button>

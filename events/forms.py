@@ -53,7 +53,12 @@ class EventForm(forms.ModelForm):
         model = Event
         fields = ['title', 'bio', 'venue', 'address', 'date', 'music_genre']
         widgets = {
-            'date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'bio': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'venue': forms.TextInput(attrs={'class': 'form-control'}),
+            'address': forms.TextInput(attrs={'class': 'form-control'}),
+            'date': forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'}),
+            'music_genre': forms.Select(attrs={'class': 'form-select'}),
         }
 
     def clean_address(self):
