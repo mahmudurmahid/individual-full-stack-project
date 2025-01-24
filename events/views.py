@@ -131,18 +131,21 @@ def create_event(request):
     """
     Allows event holders to create a new event.
     """
+    # Ensure only event holders can access this view
     if not hasattr(request.user, 'profile') or request.user.profile.role != 'event_holder':
         return HttpResponseForbidden("Only event holders can create events.")
 
     if request.method == 'POST':
         form = EventForm(request.POST)
+        print(f"POST data: {request.POST}")  # Debug: Print submitted data
         if form.is_valid():
-            event = form.save(commit=False)
-            event.created_by = request.user
-            event.save()
-            return redirect('my_events')  # Redirect to "my events" page
+            event = form.save(commit=False)  # Don't save yet
+            event.created_by = request.user  # Set the user as the creator
+            event.save()  # Save the event
+            print(f"Event '{event.title}' created successfully.")  # Debug: Confirmation
+            return redirect('event_holder_home')  # Redirect to the event holder homepage
         else:
-            print(form.errors)  # Debug: Print form errors in the console
+            print(f"Form errors: {form.errors}")  # Debug: Print form errors
     else:
         form = EventForm()
 

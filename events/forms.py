@@ -61,13 +61,11 @@ class EventForm(forms.ModelForm):
             'music_genre': forms.Select(attrs={'class': 'form-select'}),
         }
 
-    def clean_address(self):
-        address = self.cleaned_data.get('address')
-        # Example address validation regex for UK postcodes
-        pattern = r'^\d+\s\w+(?:\s\w+)*,\s*\w+(?:\s\w+)*,\s[A-Z]{1,2}\d{1,2}\s?\d[A-Z]{2}$'
-
-        if not re.match(pattern, address):
-            raise forms.ValidationError(
-                "Please enter a valid address in the format: '84 John Street, Sheffield, S13 5JG'"
-            )
-        return address
+def clean_address(self):
+    address = self.cleaned_data.get('address')
+    # Basic validation: Ensure the address is not too short or missing commas
+    if len(address) < 10 or ',' not in address:
+        raise forms.ValidationError(
+            "Please enter a valid address, including street, city, and postcode."
+        )
+    return address
