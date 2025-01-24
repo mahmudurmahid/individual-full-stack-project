@@ -5,26 +5,58 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden, HttpResponseBadRequest
 from django.contrib.auth.views import LoginView
 from .forms import RegisterForm, EventForm, CustomLoginForm
-from .models import Event, Booking
+from .models import Event, Booking, Profile
 
 
-# Homepage View
 class HomePage(TemplateView):
     """
-    Displays static homepage
+    Redirects users based on their role or shows the public homepage if not authenticated.
     """
-    template_name = 'index.html'
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return render(request, 'index.html')  # Public homepage
+        elif hasattr(request.user, 'profile'):
+            if request.user.profile.role == 'customer':
+                return redirect('customer_home')
+            elif request.user.profile.role == 'event_holder':
+                return redirect('event_holder_home')
+        return HttpResponseForbidden("Invalid role or profile missing.")
 
 
-# Event Listing View (Customers Only)
+@login_required
+def customer_home(request):
+    """
+    Displays the customer-specific homepage with a list of events and bookings.
+    """
+    if request.user.profile.role != 'customer':
+        return HttpResponseForbidden("Only customers can access this page.")
+
+    events = Event.objects.all()
+    bookings = Booking.objects.filter(user=request.user)
+    return render(request, 'customer_home.html', {'events': events, 'bookings': bookings})
+
+
+@login_required
+def event_holder_home(request):
+    """
+    Displays the event holder-specific homepage with their created events.
+    """
+    if request.user.profile.role != 'event_holder':
+        return HttpResponseForbidden("Only event holders can access this page.")
+
+    my_events = Event.objects.filter(created_by=request.user)
+    return render(request, 'event_holder_home.html', {'my_events': my_events})
+
+
 @login_required
 def event_list(request):
+    """
+    Displays the list of upcoming events (accessible only to customers).
+    """
     if request.user.profile.role != 'customer':
         return HttpResponseForbidden("Only customers can view all upcoming events.")
-    
-    events = Event.objects.all()
 
-    # Apply filters if criteria are provided
+    events = Event.objects.all()
     music_genre = request.GET.get('music_genre')
     city = request.GET.get('city')
     date = request.GET.get('date')
@@ -34,47 +66,49 @@ def event_list(request):
     if city:
         events = events.filter(address__icontains=city)
     if date:
-        events = events.filter(date__date=date)  # Match only the date part
+        events = events.filter(date__date=date)
 
-    # Get unique genres and cities for filter dropdowns
     genres = Event.objects.values_list('music_genre', flat=True).distinct()
     cities = Event.objects.values_list('address', flat=True)
-    cities = {addr.split(',')[-2].strip() for addr in cities}  # Extract cities from addresses
+    cities = {addr.split(',')[-2].strip() for addr in cities}
 
     return render(request, 'event_list.html', {
         'events': events,
         'genres': genres,
-        'cities': sorted(cities),  # Sorted list of cities
+        'cities': sorted(cities),
     })
 
 
-# User Registration View
 def register(request):
+    """
+    Handles user registration.
+    """
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            backend_path = 'django.contrib.auth.backends.ModelBackend'  # Specify the backend explicitly
-            login(request, user, backend=backend_path)
+            login(request, user)
             return redirect('home')
-        else:
-            return render(request, 'register.html', {'form': form, 'errors': form.errors})
     else:
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
 
 
-# Custom Login View
 class CustomLoginView(LoginView):
+    """
+    Custom login view that uses email and password for authentication.
+    """
     template_name = 'login.html'
     authentication_form = CustomLoginForm
     redirect_authenticated_user = True
     next_page = '/'
 
 
-# Event Creation View (Event Holders Only)
 @login_required
 def create_event(request):
+    """
+    Allows event holders to create a new event.
+    """
     if not hasattr(request.user, 'profile') or request.user.profile.role != 'event_holder':
         return HttpResponseForbidden("Only event holders can create events.")
 
@@ -84,50 +118,13 @@ def create_event(request):
             event = form.save(commit=False)
             event.created_by = request.user
             event.save()
-            return redirect('my_events')  # Redirect to the event holder's events
+            return redirect('event_holder_home')
     else:
         form = EventForm()
 
     return render(request, 'create_event.html', {'form': form})
 
-
-# Event Holder's Created Events (Event Holders Only)
-@login_required
-def my_events(request):
-    if request.user.profile.role != 'event_holder':
-        return HttpResponseForbidden("Only event holders can view their created events.")
-
-    events = Event.objects.filter(created_by=request.user)
-    return render(request, 'my_events.html', {'events': events})
-
-
-# Ticket Booking View (Customers Only)
-@login_required
-def book_event(request, event_id):
-    if request.user.profile.role != 'customer':
-        return HttpResponseForbidden("Only customers can book tickets.")
-    
-    event = get_object_or_404(Event, id=event_id)
-
-    if request.method == 'POST':
-        ticket_count = int(request.POST.get('ticket_count', 1))
-        if ticket_count < 1 or ticket_count > 5:
-            return HttpResponseBadRequest("You can only book between 1 and 5 tickets.")
-        
-        booking, created = Booking.objects.get_or_create(user=request.user, event=event)
-        booking.ticket_count = ticket_count
-        booking.save()
-
-        return render(request, 'booking_confirmed.html', {'event': event, 'ticket_count': ticket_count})
-
-    return render(request, 'book_event.html', {'event': event})
-
-
-# Booking Listing View (Customers Only)
 @login_required
 def booked_events(request):
-    if request.user.profile.role != 'customer':
-        return HttpResponseForbidden("Only customers can view their bookings.")
-    
-    bookings = Booking.objects.filter(user=request.user).select_related('event')
+    bookings = Booking.objects.filter(user=request.user)
     return render(request, 'booked_events.html', {'bookings': bookings})

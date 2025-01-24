@@ -18,29 +18,18 @@
   </head>
   <body>
     <div class="container mt-5">
-      <h1 class="mb-4">My Booked Events</h1>
-      {% if bookings %}
+      <h1>My Bookings</h1>
       <ul class="list-group">
         {% for booking in bookings %}
         <li class="list-group-item">
-          <h4>{{ booking.event.title }}</h4>
-          <p><strong>Date:</strong> {{ booking.event.date }}</p>
-          <p><strong>Venue:</strong> {{ booking.event.venue }}</p>
-          <p><strong>Booked On:</strong> {{ booking.booked_on }}</p>
+          <strong>{{ booking.event.title }}</strong> - {{ booking.ticket_count
+          }} tickets
         </li>
+        {% empty %}
+        <li class="list-group-item">You have not booked any events yet.</li>
         {% endfor %}
       </ul>
-      {% else %}
-      <p>You have not booked any events yet.</p>
-      {% endif %}
-      <a href="{% url 'event_list' %}" class="btn btn-primary mt-3"
-        >Back to Events</a
-      >
     </div>
-
-    <!-- Bootstrap CSS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JavaScript-->
-    <script src="static/js/script.js"></script>
   </body>
 </html>

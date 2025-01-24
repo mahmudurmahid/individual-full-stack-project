@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Event Holder Homepage</title>
-  </head>
-  <body>
-    <h1>Welcome, {{ request.user.first_name }}</h1>
-    <h2>Your Events</h2>
-    <ul>
-      {% for event in my_events %}
-      <li>{{ event.title }} at {{ event.venue }} on {{ event.date }}</li>
-      {% endfor %}
-    </ul>
-    <a href="{% url 'create_event' %}">Create New Event</a>
-  </body>
-</html>
+{% extends 'base.html' %} {% block title %}Event Holder Dashboard{% endblock %}
+{% block content %}
+<h1>Welcome, {{ request.user.first_name }}</h1>
+
+<h2>Your Events</h2>
+<ul>
+  {% for event in my_events %}
+  <li>{{ event.title }} at {{ event.venue }} on {{ event.date }}</li>
+  {% endfor %}
+</ul>
+<a href="{% url 'create_event' %}" class="btn btn-primary mt-3"
+  >Create New Event</a
+>
+{% endblock %}
