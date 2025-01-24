@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Customer Homepage</title>
+  </head>
+  <body>
+    <h1>Welcome, {{ request.user.first_name }}</h1>
+    <h2>Upcoming Events</h2>
+    <ul>
+      {% for event in events %}
+      <li>{{ event.title }} at {{ event.venue }} on {{ event.date }}</li>
+      {% endfor %}
+    </ul>
+    <h2>Your Bookings</h2>
+    <ul>
+      {% for booking in bookings %}
+      <li>{{ booking.event.title }} - {{ booking.ticket_count }} tickets</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
