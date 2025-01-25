@@ -1,7 +1,14 @@
-/* Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;600;700&display=swap");
 
 /* Global Styles */
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
 body {
   font-family: "Lato", sans-serif;
   color: #333;
@@ -75,7 +82,7 @@ h3 {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 18rem; /* Ensure consistent card width */
+  width: 18rem;
 }
 
 .card-body {
@@ -123,20 +130,64 @@ h3 {
 /* Responsive Design */
 @media (max-width: 768px) {
   .features {
-    flex-direction: column; /* Stack cards vertically on small screens */
+    flex-direction: column;
     margin: 2rem 0;
   }
+
   .card {
-    margin-bottom: 1.5rem; /* Add space between stacked cards */
+    margin-bottom: 1.5rem;
   }
+
   .card-title {
     font-size: 1.1rem;
   }
+
   .card-text {
     font-size: 0.9rem;
   }
+
   .btn-primary {
     font-size: 0.9rem;
     padding: 0.5rem 1rem;
   }
+}
+
+/* Login Page */
+.login-form {
+  margin: 5rem auto;
+  padding: 2rem;
+  width: 400px;
+  background-color: #75704e;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form label {
+  font-size: 1.1rem;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+.login-form input {
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-form input::placeholder {
+  color: #aaa;
+}
+
+.login-form button {
+  font-size: 1.2rem;
+  padding: 0.75rem;
+  background-color: #faa381;
+  border: none;
+  border-radius: 5px;
+}
+
+.login-form button:hover {
+  background-color: #f5cda7;
+  color: #333;
 }
