@@ -54,11 +54,11 @@
           <div
             class="d-flex align-items-center justify-content-center text-center vh-100"
             style="
-              background: url('/path-to-image-1.jpg') center center/cover
-                no-repeat;
+              background: url('https://res.cloudinary.com/djsiill0q/image/upload/v1737832997/live_music_concert_scene_features_a_diverse_crowd_enjoying_a_live_band_perform_vm6rax.webp')
+                center center/cover no-repeat;
             "
           >
-            <div class="text-white">
+            <div class="hero-carousel">
               <h1 class="display-4 fw-bold">
                 Experience Live Music Like Never Before
               </h1>
@@ -74,11 +74,11 @@
           <div
             class="d-flex align-items-center justify-content-center text-center vh-100"
             style="
-              background: url('/path-to-image-2.jpg') center center/cover
-                no-repeat;
+              background: url('https://res.cloudinary.com/djsiill0q/image/upload/v1737832997/live_music_concert_scene_features_a_diverse_crowd_enjoying_a_live_band_perform_vm6rax.webp')
+                center center/cover no-repeat;
             "
           >
-            <div class="text-white">
+            <div class="hero-carousel">
               <h1 class="display-4 fw-bold">Find Your Next Favorite Artist</h1>
               <p class="lead">Discover amazing performances near you.</p>
               <a href="{% url 'login' %}" class="btn btn-primary btn-lg"
@@ -92,11 +92,11 @@
           <div
             class="d-flex align-items-center justify-content-center text-center vh-100"
             style="
-              background: url('/path-to-image-3.jpg') center center/cover
-                no-repeat;
+              background: url('https://res.cloudinary.com/djsiill0q/image/upload/v1737832997/live_music_concert_scene_features_a_diverse_crowd_enjoying_a_live_band_perform_vm6rax.webp')
+                center center/cover no-repeat;
             "
           >
-            <div class="text-white">
+            <div class="hero-carousel">
               <h1 class="display-4 fw-bold">
                 Your Gateway to Incredible Music Events
               </h1>
@@ -131,62 +131,59 @@
     </div>
 
     <!-- Features Section -->
-    <div class="features container py-5">
-      <div class="row">
+    <div class="features py-5">
+      <div
+        class="d-flex flex-wrap justify-content-center align-items-center gap-4"
+      >
         <!-- Card 1 -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <img
-              src="/path-to-image-1.jpg"
-              class="card-img-top"
-              alt="Discover Events"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Discover Events</h5>
-              <p class="card-text">
-                Browse and book tickets for upcoming live music events around
-                you.
-              </p>
-              <a href="{% url 'register' %}" class="btn btn-primary"
-                >Explore Now</a
-              >
-            </div>
+        <div class="card" style="width: 18rem">
+          <img
+            src="/path-to-image-1.jpg"
+            class="card-img-top"
+            alt="Discover Events"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Discover Events</h5>
+            <p class="card-text">
+              Browse and book tickets for upcoming live music events close by.
+            </p>
+            <a href="{% url 'register' %}" class="btn btn-primary"
+              >Explore Now</a
+            >
           </div>
         </div>
+
         <!-- Card 2 -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <img
-              src="/path-to-image-2.jpg"
-              class="card-img-top"
-              alt="Become a Host"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Become a Host</h5>
-              <p class="card-text">
-                Create and manage your own music events as an Event Holder.
-              </p>
-              <a href="{% url 'register' %}" class="btn btn-primary"
-                >Get Started</a
-              >
-            </div>
+        <div class="card" style="width: 18rem">
+          <img
+            src="/path-to-image-2.jpg"
+            class="card-img-top"
+            alt="Become a Host"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Become a Host</h5>
+            <p class="card-text">
+              Create and manage your own music events as an Event Holder.
+            </p>
+            <a href="{% url 'register' %}" class="btn btn-primary"
+              >Get Started</a
+            >
           </div>
         </div>
+
         <!-- Card 3 -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <img
-              src="/path-to-image-3.jpg"
-              class="card-img-top"
-              alt="Join the Community"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Join the Community</h5>
-              <p class="card-text">
-                Connect with music lovers and enjoy unforgettable experiences.
-              </p>
-              <a href="{% url 'register' %}" class="btn btn-primary">Join Us</a>
-            </div>
+        <div class="card" style="width: 18rem">
+          <img
+            src="/path-to-image-3.jpg"
+            class="card-img-top"
+            alt="Join the Community"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Join the Community</h5>
+            <p class="card-text">
+              Connect with music lovers and enjoy unforgettable experiences.
+            </p>
+            <a href="{% url 'register' %}" class="btn btn-primary">Join Us</a>
           </div>
         </div>
       </div>
