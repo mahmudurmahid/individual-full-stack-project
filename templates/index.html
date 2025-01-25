@@ -27,52 +27,41 @@
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-            </li>
-            {% if user.profile.role == "customer" %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'event_list' %}"
-                >Upcoming Events</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'my_bookings' %}">My Bookings</a>
-            </li>
-            {% elif user.profile.role == "event_holder" %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'my_events' %}">My Events</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'create_event' %}"
-                >Create Event</a
-              >
-            </li>
-            {% endif %} {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'register' %}">Register</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'login' %}">Login</a>
             </li>
-            {% endif %}
           </ul>
         </div>
       </div>
     </nav>
 
     <!-- Hero Section -->
-    <div class="hero">
+    <!-- <div class="hero">
       <div class="hero-content">
         <h1>Experience Live Music Like Never Before</h1>
         <p>Book tickets, join events, and discover music.</p>
         <a href="/events/" class="btn btn-lg btn-custom">Explore Events</a>
+      </div>
+    </div> -->
+
+    <div class="bg-light py-5 text-center">
+      <div class="container">
+        <h1 class="display-4 fw-bold">
+          Experience Live Music Like Never Before
+        </h1>
+        <p class="lead">Book tickets, join events, and discover music.</p>
+        <a href="/events/" class="btn btn-primary btn-lg">Explore Events</a>
       </div>
     </div>
 
