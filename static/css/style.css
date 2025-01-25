@@ -191,3 +191,64 @@ h3 {
   background-color: #f5cda7;
   color: #333;
 }
+
+/* Register Page */
+.register-form {
+  margin: 5rem auto;
+  padding: 2.5rem;
+  width: 400px;
+  background-color: #75704e;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+.register-form h2 {
+  font-family: "Poppins", sans-serif;
+  color: #faa381;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.register-form label {
+  font-size: 1.1rem;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+.register-form input {
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.register-form input::placeholder {
+  color: #aaa;
+}
+
+.register-form button {
+  font-size: 1.2rem;
+  padding: 0.75rem;
+  background-color: #faa381;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.register-form button:hover {
+  background-color: #f5cda7;
+  color: #333;
+}
+
+.register-form a {
+  color: #faa381;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.register-form a:hover {
+  text-decoration: underline;
+}
