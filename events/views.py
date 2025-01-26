@@ -56,11 +56,14 @@ def book_event(request, event_id):
         return redirect('login')  # Redirect to login if user is not authenticated
 
     # Check if the user has already booked this event
-    if Booking.objects.filter(user=request.user, event=event).exists():
+    existing_booking = Booking.objects.filter(user=request.user, event=event).first()
+    if existing_booking:
+        print(f"User {request.user.username} already booked the event: {event.title}")
         return redirect('my_bookings')  # Redirect if already booked
 
     # Create a booking
-    Booking.objects.create(user=request.user, event=event)
+    booking = Booking.objects.create(user=request.user, event=event)
+    print(f"Booking created: {booking}")
     return redirect('my_bookings')
 
 
@@ -90,9 +93,12 @@ def create_event(request):
         form = EventForm(request.POST)
         if form.is_valid():
             event = form.save(commit=False)
-            event.organizer = request.user
+            event.organizer = request.user  # Assign the current user as the organizer
             event.save()
+            print(f"Event '{event.title}' created successfully by {event.organizer}.")
             return redirect('my_events')
+        else:
+            print("Form errors:", form.errors)  # Log form errors
     else:
         form = EventForm()
     return render(request, 'create_event.html', {'form': form})
@@ -101,14 +107,18 @@ def create_event(request):
 @login_required
 def my_events(request):
     """View to display events created by the logged-in event holder."""
+    # Fetch events created by the logged-in organizer
     events = Event.objects.filter(organizer=request.user)
-    return render(request, 'my_events.html', {'events': events})
+    print(f"Events created by {request.user.username}: {events.count()}")  # Debugging info
+
+    return render(request, 'my_events.html', {'my_events': events})
 
 
 @login_required
 def event_list(request):
     """View to display all available events."""
-    events = Event.objects.all()
+    events = Event.objects.all()  # Fetch all events without filtering by user
+    print(f"Total events fetched: {events.count()}")  # Debugging info
     return render(request, 'event_list.html', {'events': events})
 
 
@@ -116,4 +126,5 @@ def event_list(request):
 def my_bookings(request):
     """View to display all bookings made by the logged-in user."""
     bookings = Booking.objects.filter(user=request.user)
+    print(f"Bookings for user {request.user.username}: {bookings.count()}")  # Debugging info
     return render(request, 'booked_events.html', {'bookings': bookings})
