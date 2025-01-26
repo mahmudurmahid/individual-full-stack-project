@@ -43,19 +43,18 @@
 10. [User View - Registered/Unregistered](#user-view---registeredunregistered)
 11. [CRUD Functionality](#crud-functionality)
 12. [Feature Showcase](#feature-showcase)
-
-- [Header/Navigation & Footer](#headernavigation--footer)
-- [Home Page](#home-page)
-- [Registration/Sign-Up](#registration/sign-up)
-- [Profile](#profile)
-- [Events](#events)
-- [Bookings](#bookings)
-- [Gallery](#gallery)
-- [Visit Us](#visit-us)
-- [Error Pages](#error-pages)
-
+    - [Header/Navigation & Footer](#headernavigation--footer)
+    - [Home Page](#home-page)
+    - [Registration/Sign-Up](#registration/sign-up)
+    - [Profile](#profile)
+    - [Events](#events)
+    - [Bookings](#bookings)
+    - [Gallery](#gallery)
+    - [Visit Us](#visit-us)
+    - [Error Pages](#error-pages)
 13. [Admin Panel](#admin-panel)
 14. [Future Development](#future-development)
+15. [Technologies & Tools Used](#technologies--tools-used)
 
 ---
 
@@ -530,3 +529,56 @@ For future versions of MusicMatch, the following features will enhance its datab
    - Integration with social login options (e.g., Google or Facebook) via Django AllAuth.
 4. **Advanced Search Filters**:
    - Adding search options for events based on `music_genre`, `venue`, or `date`.
+
+## **Technologies & Languages Used**
+
+### **Languages**
+
+- **HTML**: For the structure and content of the webpages.
+- **CSS**: For styling and ensuring a visually appealing design.
+- **Python**: The backend programming language used to build and manage the application.
+
+### **Version Control & Collaboration**
+
+- **Git**: Used for version control to manage changes to the codebase.
+- **GitHub**: For online storage of the codebase and project management using the Projects tool.
+
+### **Development Environment**
+
+- **Gitpod**: A cloud-based development environment used for initial project setup and development.
+- **Visual Studio Code (VS Code)**: Used as the primary local development environment for building and debugging the application.
+- **Figma**: Used for designing wireframes and planning the visual layout of the website.
+- **Coolors**: For creating the website’s color theme and checking color accessibility.
+
+### **Frameworks & Libraries**
+
+- **Django 4.2.18**: A Python-based framework used to build the web application.
+- **Bootstrap v5.3**: For responsive front-end design and layout.
+
+### **Cloud & Database Services**
+
+- **Cloudinary**: For cloud storage of user-uploaded media such as images.
+- **PostGRE SQL**: For hosting the PostgreSQL database that manages user and event data.
+- **Heroku**: Used to host the deployed version of the MusicMatch application.
+
+### **Design & Media Tools**
+
+- **DALL-E**: For image creation and editing.
+
+### **Accessibility & Testing**
+
+- **WAVE**: For evaluating the accessibility of the site.
+- **Lighthouse**: For performance and SEO testing of the site.
+
+---
+
+## **Tools & Programs**
+
+- **Lucidchart**: For creating the Entity Relationship Diagram (ERD) used to visualize database relationships.
+- **Microsoft Co-Pilot**: For coding errors.
+- **ChatGPT**: for debugging.
+- **Perplexity AI**: Used as a resource to break down complex Django concepts and documentation into digestible information.
+
+---
+
+### **Testing**
