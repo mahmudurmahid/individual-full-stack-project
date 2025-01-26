@@ -55,8 +55,7 @@
 - [Error Pages](#error-pages)
 
 13. [Admin Panel](#admin-panel)
-
-- [Future Development](#future-development)
+14. [Future Development](#future-development)
 
 ---
 
