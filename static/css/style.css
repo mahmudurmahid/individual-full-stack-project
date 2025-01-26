@@ -252,3 +252,38 @@ h3 {
 .register-form a:hover {
   text-decoration: underline;
 }
+
+/* Create Event Page */
+.create-event-form {
+  margin: 5rem auto;
+  padding: 2.5rem;
+  width: 400px;
+  background-color: #75704e;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+.create-event-form h2 {
+  font-family: "Poppins", sans-serif;
+  color: #faa381;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.create-event-form label {
+  font-size: 1.1rem;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+.create-event-form input,
+.create-event-form select,
+.create-event-form textarea {
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
