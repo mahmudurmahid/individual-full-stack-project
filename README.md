@@ -692,7 +692,7 @@ The following resources provided the media and visuals used in this project:
 ### Acknowledgements
 
 - **Code Institute Community**: For feedback, guidance, and motivation during the development process.
-- **My Mentor**: For their invaluable advice and constructive suggestions throughout the project.
+- **My Mentor (Amy)**: For their invaluable advice and constructive suggestions throughout the project.
 - **Friends and Family**: For assisting with testing and providing feedback to improve the site.
 - **Microsoft CoPilot**: For debugging and generating code suggestions.
 
