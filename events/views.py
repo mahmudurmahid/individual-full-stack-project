@@ -28,6 +28,9 @@ def register(request):
                 return redirect('customer_home')
             elif hasattr(user, 'profile') and user.profile.role == 'event_holder':
                 return redirect('event_holder_home')
+        else:
+            # Debugging form errors
+            print("Form Errors:", form.errors)
     else:
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
