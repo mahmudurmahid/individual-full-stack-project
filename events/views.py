@@ -24,9 +24,9 @@ def register(request):
             user = form.save()
             login(request, user)
             # Redirect based on user role
-            if hasattr(user, 'profile') and user.profile.role == 'customer':
+            if user.profile.role == 'customer':
                 return redirect('customer_home')
-            elif hasattr(user, 'profile') and user.profile.role == 'event_holder':
+            elif user.profile.role == 'event_holder':
                 return redirect('event_holder_home')
         else:
             # Debugging form errors
