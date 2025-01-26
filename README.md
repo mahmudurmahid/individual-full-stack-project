@@ -620,46 +620,46 @@ To begin this project from scratch, follow these steps:
    python manage.py migrate
 7. Create an `env.py` file to store sensitive environment variables:
 
-````python
+```python
 import os
 
 os.environ["DATABASE_URL"] = "your_database_url_here"
 os.environ["SECRET_KEY"] = "your_secret_key_here"
+```
+
 8. Update settings.py to use the env.py file:
-import os
-import dj_database_url
+   import os
+   import dj_database_url
 
 if os.path.exists("env.py"):
-    import env
+import env
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
-9. Set up the templates directory in settings.py:
+'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+} 9. Set up the templates directory in settings.py:
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 TEMPLATES = [
-    {
-        ...,
-        'DIRS': [TEMPLATES_DIR],
-    }
-]
-10. Create static, media, and templates directories in your project folder.
-11. Add a Procfile for Heroku deployment:
+{
+...,
+'DIRS': [TEMPLATES_DIR],
+}
+] 10. Create static, media, and templates directories in your project folder. 11. Add a Procfile for Heroku deployment:
 web: gunicorn musicmatch.wsgi
 
-
 Cloning the Repository
+
 1. Log in to [GitHub](https://github.com/).
 2. Navigate to the repository and click the **Code** button.
 3. Copy the HTTPS, SSH, or GitHub CLI URL.
 4. Open your terminal and run the following command:
    ```bash
    git clone <repository-url>
+   ```
 5. Navigate to the cloned directory and install dependencies:
-pip install -r requirements.txt
+   pip install -r requirements.txt
 
 Forking the Repository
 
@@ -668,5 +668,47 @@ Forking the Repository
 3. You now have a copy of the repository in your GitHub account.
 4. Clone and configure the forked repository by following the steps in the **Cloning the Repository** section.
 
+## Credits
 
-````
+### Code
+
+The following resources, blogs, and tutorials were instrumental in helping me build this project:
+
+- **Django Documentation**: For understanding the MVT framework, working with forms, models, and user authentication.
+  - [Django Documentation](https://docs.djangoproject.com/en/stable/)
+- **Bootstrap Documentation**: For creating a responsive and visually appealing front-end.
+  - [Bootstrap Docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- **Code Institute Resources**:
+  - Boutique Ado walkthroughs for concepts like deployment and CRUD functionality.
+  - Blog walkthroughs for Django basics, project structure, and testing.
+- **Adel Codes (YouTube)**: Provided insights on building Django projects like booking and scheduling systems.
+  - [Adel Codes](https://www.youtube.com/c/AdelCodes)
+- **Django Save Method in Models**: Helped me override the `save()` method in Django models.
+  - [Save Method in Models](https://docs.djangoproject.com/en/stable/ref/models/instances/#saving-objects)
+- **Django UserCreationForm**: Learned how to create custom user registration forms.
+  - [Django UserCreationForm](https://docs.djangoproject.com/en/stable/topics/auth/default/#django.contrib.auth.forms.UserCreationForm)
+- **ChatGPT**: Helped debug and optimize my code throughout various stages of the project.
+- **Microsoft Co-Pilot**: Helped debug and optimize my code throughout various stages of the project.
+
+### Media
+
+The following resources provided the media and visuals used in this project:
+
+- **DALL-E**: For creating project-specific images and design elements.
+- **Figma**: Used to design custom graphics and icons.
+
+### Acknowledgements
+
+- **Code Institute Community**: For feedback, guidance, and motivation during the development process.
+- **My Mentor**: For their invaluable advice and constructive suggestions throughout the project.
+- **Friends and Family**: For assisting with testing and providing feedback to improve the site.
+- **Microsoft CoPilot**: For debugging and generating code suggestions.
+
+### Additional Reading/Tutorials
+
+- **Python Crash Course** by Eric Matthes: A helpful guide to understanding Python fundamentals.
+  - [Python Crash Course](https://nostarch.com/python-crash-course)
+- **GeeksforGeeks**: For explaining Django's ORM, class-based views, and template filtering.
+  - [GeeksforGeeks Django](https://www.geeksforgeeks.org/django-tutorial/)
+- **Django for Beginners** by William S. Vincent: A beginner-friendly book for understanding Django.
+  - [Django for Beginners](https://djangoforbeginners.com)
