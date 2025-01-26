@@ -2,6 +2,10 @@
 
 ## Table of Contents
 
+# MusicMatch App
+
+## Table of Contents
+
 1. [Introduction](#introduction)
 2. [Overview](#overview)
 3. [UX - User Experience](#ux---user-experience)
@@ -15,10 +19,14 @@
    - [MoSCoW Prioritization](#moscow-prioritization)
    - [Sprints](#sprints)
 5. [User Stories](#user-stories)
-   - [Must-Have Features ✅](#must-have-features-)
-   - [Should-Have Features ⏳](#should-have-features-)
-   - [Could-Have Features 🚀](#could-have-features-)
-6. [Scope Plane](#scope-plane)
+   - [Must-Have Features ✅](#must-have-features-✅)
+   - [Should-Have Features ⏳](#should-have-features-⏳)
+   - [Could-Have Features 🚀](#could-have-features-🚀)
+6. [Scope Plane, Structural Plane, Skeleton and Surface Planes](#scope-plane-structural-plane-skeleton-and-surface-planes)
+   - [Scope Plane](#scope-plane)
+   - [Structural Plane](#structural-plane)
+   - [Skeleton Plane](#skeleton-plane)
+   - [Surface Plane](#surface-plane)
 
 ---
 
@@ -159,7 +167,7 @@ Sprint planning ensured steady progress:
 
 ---
 
-## Scope Plane
+## Scope Plane, Structural Plane, Skeleton and Surface Planes
 
 | Feature               | Visitors | Registered Users |
 | --------------------- | -------- | ---------------- |
@@ -168,3 +176,114 @@ Sprint planning ensured steady progress:
 | Host Dashboard        | No       | Yes (Hosts Only) |
 | Mobile Responsiveness | Yes      | Yes              |
 | CRUD Functionality    | No       | Yes              |
+
+### Scope Plane
+
+The scope of **MusicMatch** focuses on addressing key needs for both event organizers and attendees. The primary aim is to create a user-friendly platform where:
+
+- Users can explore, register, and book tickets for events with ease.
+- Event hosts can create, manage, and promote events effectively.
+
+#### Essential Features:
+
+- User registration and authentication.
+- Event creation by hosts.
+- Event browsing and ticket booking.
+- Responsive design for all devices.
+
+- Attendee/Customer Features:
+  ![alt text](image-1.png)
+  ![alt text](image-2.png)
+  ![alt text](image-3.png)
+  ![alt text](image-4.png)
+
+- Event Hoder Features:
+  ![alt text](<Screenshot 2025-01-26 at 22.14.56.png>)
+  ![alt text](<Screenshot 2025-01-26 at 22.20.00.png>)
+  ![alt text](<Screenshot 2025-01-26 at 22.17.55.png>)
+  ![alt text](<Screenshot 2025-01-26 at 22.18.51.png>)
+
+#### Future Scope:
+
+- Integration of payment gateways.
+- Advanced search options, including artist and genre-based filters.
+- Email notifications and reminders for bookings.
+- Enhanced host dashboards with analytics and ticket management.
+
+---
+
+### Structural Plane
+
+The structural design of **MusicMatch** ensures logical organization and easy navigation. Core elements were developed to cater to both functional requirements and user interaction flow.
+
+#### Navigation Design:
+
+- A clear, top navigation bar provides direct access to key sections: Home, Events, Login, and Host Dashboard.
+- Conditional links based on user roles (attendees vs. hosts).
+
+#### Page Layout:
+
+- **Events Listing Page:** Features a card-based design, with event titles, dates, and venues clearly displayed.
+- **Host Dashboard:** Displays a list of hosted events with options to edit or delete events.
+- **Mobile Responsiveness:** Bootstrap grid classes and custom CSS ensure seamless transitions between devices.
+
+#### Accessibility:
+
+- Added ARIA roles and semantic HTML tags for screen readers.
+- Tooltips for icons and form fields provide extra guidance for users.
+
+---
+
+### Skeleton Plane
+
+The skeleton phase involved creating wireframes to map out user interactions and content placements. These were designed to prioritize intuitive navigation and visually balanced layouts.
+
+#### Wireframe Highlights:
+
+- **Homepage:**
+  - Hero section with a welcome message and CTA buttons for exploring events or signing up.
+  - Upcoming events preview with a "View All Events" link.
+- **Event Details Page:**
+  - Displays detailed information about the event, including date, time, and venue.
+  - A prominent "Book Now" button for ticket reservation.
+- **Host Dashboard:**
+  - A list of events created by the host, with action buttons for editing or deleting events.
+
+#### Design Tools Used:
+
+- Wireframes were created using Figma to ensure precision and clarity.
+- Focus on a grid-based layout to ensure modularity.
+
+---
+
+### Surface Plane
+
+The surface plane of **MusicMatch** focuses on the aesthetics and visual appeal while maintaining usability.
+
+#### Colour Scheme:
+
+- **Primary:** `#faa381` (light orange) for action buttons and highlights.
+- **Secondary:** `#c9dbba` (muted green) for backgrounds and soft accents.
+- **Accent:** `#75704e` (dark olive) for text and subtle elements.
+
+#### Typography:
+
+- **Poppins:** Used for headings to create a modern and approachable look.
+- **Lato:** Used for body text to ensure readability and clean presentation.
+
+#### UI Enhancements:
+
+- Buttons with hover animations to provide feedback on interactions.
+- Rounded corners and shadows on cards for a polished appearance.
+- Icons sourced from FontAwesome for intuitive and consistent visual cues.
+
+#### Responsive Design:
+
+- Media queries ensure that elements scale and adjust seamlessly across devices.
+- Forms and tables are optimized for smaller screens without sacrificing functionality.
+
+---
+
+### Conclusion
+
+The integration of the **Scope**, **Structural**, **Skeleton**, and **Surface** planes ensures that **MusicMatch** delivers a cohesive and delightful experience for all users. These foundational design principles provide a scalable framework to enhance the platform in future iterations.
