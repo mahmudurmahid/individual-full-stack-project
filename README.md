@@ -6,6 +6,8 @@
 
 ## Table of Contents
 
+## Table of Contents
+
 1. [Introduction](#introduction)
 2. [Overview](#overview)
 3. [UX - User Experience](#ux---user-experience)
@@ -27,7 +29,9 @@
    - [Structural Plane](#structural-plane)
    - [Skeleton Plane](#skeleton-plane)
    - [Surface Plane](#surface-plane)
-7. [Database Schema - Entity Relationship Diagram](#database-schema---entity-relationship-diagram)
+7. [Attendee Features](#attendee-features)
+8. [Event Holder Features](#event-holder-features)
+9. [Database Schema - Entity Relationship Diagram](#database-schema---entity-relationship-diagram)
    - [ERD Image](#erd-image)
    - [Overview](#overview-1)
    - [How It Works](#how-it-works)
@@ -37,7 +41,21 @@
      - [Defensive Design](#defensive-design)
      - [Data Management](#data-management)
    - [Future Development](#future-development)
-   - [Acknowledgments](#acknowledgments)
+10. [User View - Registered/Unregistered](#user-view---registeredunregistered)
+11. [CRUD Functionality](#crud-functionality)
+12. [Feature Showcase](#feature-showcase)
+
+- [Header/Navigation & Footer](#headernavigation--footer)
+- [Home Page](#home-page)
+- [Registration/Sign-Up](#registration/sign-up)
+- [Profile](#profile)
+- [Events](#events)
+- [Bookings](#bookings)
+- [Gallery](#gallery)
+- [Visit Us](#visit-us)
+- [Error Pages](#error-pages)
+
+13. [Admin Panel](#admin-panel)
 
 ---
 
@@ -394,9 +412,121 @@ For future versions of MusicMatch, the following features will enhance its datab
 
 ---
 
-### **Acknowledgments**
+## **User View - Registered/Unregistered**
 
-The models for MusicMatch were developed using foundational Django concepts, with inspiration drawn from various learning resources:
+MusicMatch has been designed to offer a seamless experience for both registered and unregistered users. The following breakdown outlines the features accessible to each user type:
 
-- The **Code Institute** blog walkthrough provided a strong base for profile and booking models.
-- Practical experimentation with Django’s `User` model and the `ForeignKey` and `OneToOneField` relationships allowed for more complex interactions between entities.
+### **Feature Access**
+
+| **Feature**   | **Unregistered User**                                                                | **Registered, Logged-In User**                  |
+| ------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------- |
+| **Home Page** | Visible                                                                              | Visible                                         |
+| **Profile**   | Not Visible - "Profile" icon only appears for registered, logged-in users            | Visible with full feature interaction available |
+| **Events**    | Visible but users cannot book tickets, "Book Now" redirects to the login/signup page | Visible with full feature interaction available |
+| **Bookings**  | Not Accessible                                                                       | Visible with full CRUD functionality            |
+| **Gallery**   | Visible but users cannot upload photos                                               | Visible with the option to upload photos        |
+| **Visit Us**  | Visible with interactive map functionality                                           | Visible with the same features                  |
+
+---
+
+## **CRUD Functionality**
+
+MusicMatch enables users to Create, Read, Update, and Delete data across various sections of the site. The table below provides a breakdown of CRUD functionality for each feature:
+
+| **Feature**  | **Create**                              | **Read** | **Update**               | **Delete**                                     |
+| ------------ | --------------------------------------- | -------- | ------------------------ | ---------------------------------------------- |
+| **Profile**  | Automatically created upon registration | Yes      | Yes                      | Deletion tied to account removal (Admins only) |
+| **Events**   | Yes (Event Holders only)                | Yes      | Yes (Event Holders only) | Yes (Event Holders only)                       |
+| **Bookings** | Yes                                     | Yes      | Yes                      | Yes                                            |
+| **Gallery**  | Yes (Upload photos)                     | Yes      | No                       | Yes                                            |
+
+---
+
+## **Feature Showcase**
+
+Below are screenshots showcasing MusicMatch features across different devices:
+
+### **Header/Navigation & Footer**
+
+#### **Header & Navigation**
+
+- The navigation bar allows all users to move around the site easily.
+- Registered users will see a "Profile" icon, which is hidden from unregistered users.
+- Tooltips appear on hover to explain the navigation icons.
+
+#### **Footer**
+
+- The footer includes links to MusicMatch’s social media accounts (to be added in future development).
+- Tooltips assist users who may be unfamiliar with the icons.
+
+---
+
+### **Home Page**
+
+- **Unregistered Users**: A "Sign Up" button is prominently displayed in the hero section, inviting new users to join the community.
+- **Registered Users**: A "Book Today!" button replaces the "Sign Up" button, leading users to the booking page.
+
+---
+
+### **Registration/Sign-Up**
+
+- Users must enter their username, email, and password.
+- Feedback messages ensure form completeness before submission.
+- A "Forgot Password" feature is included but not fully implemented in the current version.
+
+---
+
+### **Profile**
+
+- **Registered Users**: Profiles are created upon registration and can be personalized with a display name, profile picture, and bio.
+- In future iterations, profiles will be shareable with other users and include advanced features such as direct messaging.
+
+---
+
+### **Events**
+
+- **Unregistered Users**: Can view events but cannot book tickets.
+- **Registered Users**: Have full access to book events and manage their bookings.
+- Event Holders can create, update, and delete events.
+
+---
+
+### **Bookings**
+
+- **Registered Users Only**: Users can create, update, and delete bookings. A dropdown menu is available for selecting dates and times.
+- **Feedback on Bookings**: Users receive instant feedback on the status of their bookings, such as confirmation or unavailable time slots.
+- In future development, booking confirmations will include email notifications, and unavailable slots will be visually shaded.
+
+---
+
+### **Gallery**
+
+- **Unregistered Users**: Can view photos uploaded by others.
+- **Registered Users**: Can upload and delete their own photos.
+- In future releases, guidelines for content and AI moderation will be implemented to ensure appropriate uploads.
+
+---
+
+### **Visit Us**
+
+- Includes interactive Google Maps to display event venues and provide navigation assistance. In future releases, this page will allow users to leave reviews.
+
+---
+
+### **Error Pages**
+
+Custom error pages were designed for:
+
+- **403 Forbidden**: Access restricted to unauthorized users.
+- **404 Not Found**: Displays a "Back to Homepage" button for navigation.
+- **500 Internal Server Error**: Informs users of server issues and redirects them to the homepage.
+
+---
+
+## **Admin Panel**
+
+The Django Admin Panel gives administrators full control over all user-generated content:
+
+- **Manage Users**: Admins can view and delete user accounts, which cascade-delete related bookings and events.
+- **Approve Content**: Admins approve event submissions and gallery uploads.
+- **Handle Bookings**: Admins can manage bookings directly from the admin interface.
