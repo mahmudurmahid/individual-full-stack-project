@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout, authenticate, get_backends
 from django.contrib.auth.decorators import login_required
 from django.utils.timezone import now, timedelta
 from .forms import RegisterForm, EventForm, CustomLoginForm
@@ -22,11 +22,14 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
+            # Explicitly set the backend to avoid ambiguity
+            backend = get_backends()[0]  # Use the first available backend
+            user.backend = f"{backend.__module__}.{backend.__class__.__name__}"
             login(request, user)
             # Redirect based on user role
-            if user.profile.role == 'customer':
+            if hasattr(user, 'profile') and user.profile.role == 'customer':
                 return redirect('customer_home')
-            elif user.profile.role == 'event_holder':
+            elif hasattr(user, 'profile') and user.profile.role == 'event_holder':
                 return redirect('event_holder_home')
         else:
             # Debugging form errors

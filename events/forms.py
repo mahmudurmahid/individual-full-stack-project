@@ -12,24 +12,50 @@ class RegisterForm(UserCreationForm):
     )
     email = forms.EmailField(
         required=True,
-        widget=forms.EmailInput(attrs={'class': 'form-control'}),
+        widget=forms.EmailInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter your email'
+        }),
     )
     role = forms.ChoiceField(
         choices=ROLE_CHOICES,
-        widget=forms.Select(attrs={'class': 'form-select'}),
+        widget=forms.Select(attrs={
+            'class': 'form-select',
+            'placeholder': 'Select your role'
+        }),
     )
     first_name = forms.CharField(
         required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter your first name'
+        }),
     )
     last_name = forms.CharField(
         required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter your last name'
+        }),
     )
 
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2', 'first_name', 'last_name', 'role']
+        widgets = {
+            'username': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter your username'
+            }),
+            'password1': forms.PasswordInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter your password'
+            }),
+            'password2': forms.PasswordInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Confirm your password'
+            }),
+        }
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -43,16 +69,18 @@ class RegisterForm(UserCreationForm):
         user.last_name = self.cleaned_data['last_name']
         if commit:
             user.save()
-            Profile.objects.create(
-                user=user,
-                role=self.cleaned_data['role'],
-            )
         return user
 
 
 class CustomLoginForm(forms.Form):
-    username = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-control'}))
-    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    username = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Enter your email'
+    }))
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Enter your password'
+    }))
 
     def clean(self):
         email = self.cleaned_data.get('username')
@@ -69,12 +97,38 @@ class EventForm(forms.ModelForm):
         model = Event
         fields = ['title', 'bio', 'venue', 'street', 'city', 'postcode', 'date', 'music_genre']
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'bio': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
-            'venue': forms.TextInput(attrs={'class': 'form-control'}),
-            'street': forms.TextInput(attrs={'class': 'form-control'}),
-            'city': forms.TextInput(attrs={'class': 'form-control'}),
-            'postcode': forms.TextInput(attrs={'class': 'form-control'}),
-            'date': forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'}),
-            'music_genre': forms.Select(attrs={'class': 'form-select'}),
+            'title': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter the event title'
+            }),
+            'bio': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 3,
+                'placeholder': 'Enter a short bio or description of the event'
+            }),
+            'venue': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter the venue name'
+            }),
+            'street': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter the street address'
+            }),
+            'city': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter the city'
+            }),
+            'postcode': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter the postcode'
+            }),
+            'date': forms.DateTimeInput(attrs={
+                'class': 'form-control',
+                'type': 'datetime-local',
+                'placeholder': 'Select the event date and time'
+            }),
+            'music_genre': forms.Select(attrs={
+                'class': 'form-select',
+                'placeholder': 'Select a music genre'
+            }),
         }
