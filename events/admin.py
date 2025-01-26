@@ -2,9 +2,9 @@ from django.contrib import admin
 from .models import Event, Booking, Profile
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('title', 'venue', 'date', 'music_genre', 'organizer')
-    search_fields = ('title', 'venue', 'music_genre', 'organizer__username')
-    list_filter = ('music_genre', 'date')
+    list_display = ('title', 'venue', 'city', 'date', 'music_genre', 'organizer')
+    search_fields = ('title', 'venue', 'city', 'music_genre', 'organizer__username')
+    list_filter = ('music_genre', 'city', 'date')
     ordering = ('-date',)
 
 class BookingAdmin(admin.ModelAdmin):

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from django.utils.timezone import now, timedelta
 from .forms import RegisterForm, EventForm, CustomLoginForm
 from .models import Event, Booking
 
@@ -119,24 +120,50 @@ def create_event(request):
 @login_required
 def my_events(request):
     """View to display events created by the logged-in event holder."""
-    # Fetch events created by the logged-in organizer
     events = Event.objects.filter(organizer=request.user)
-    print(f"Events created by {request.user.username}: {events.count()}")  # Debugging info
-
     return render(request, 'my_events.html', {'my_events': events})
 
 
 @login_required
 def event_list(request):
     """View to display all available events."""
-    events = Event.objects.all()  # Fetch all events without filtering by user
-    print(f"Total events fetched: {events.count()}")  # Debugging info
-    return render(request, 'event_list.html', {'events': events})
+    music_genre = request.GET.get('music_genre', '')
+    city = request.GET.get('city', '')
+    date = request.GET.get('date', '')
+
+    events = Event.objects.all()
+    if music_genre:
+        events = events.filter(music_genre=music_genre)
+    if city:
+        events = events.filter(city__icontains=city)
+    if date:
+        events = events.filter(date__date=date)  # Filter by specific date
+
+    genres = Event.objects.values_list('music_genre', flat=True).distinct()
+    cities = Event.objects.values_list('city', flat=True).distinct()
+
+    return render(request, 'event_list.html', {'events': events, 'genres': genres, 'cities': cities})
+
+
+    # Filter logic
+    events = Event.objects.all()
+    if music_genre:
+        events = events.filter(music_genre=music_genre)
+    if city:
+        events = events.filter(address__icontains=city)
+    if date:
+        week_start = now().strptime(date, "%Y-%m-%d")
+        week_end = week_start + timedelta(days=7)
+        events = events.filter(date__range=[week_start, week_end])
+
+    genres = Event.objects.values_list('music_genre', flat=True).distinct()
+    cities = Event.objects.values_list('address', flat=True).distinct()
+
+    return render(request, 'event_list.html', {'events': events, 'genres': genres, 'cities': cities})
 
 
 @login_required
 def my_bookings(request):
     """View to display all bookings made by the logged-in user."""
     bookings = Booking.objects.filter(user=request.user)
-    print(f"Bookings for user {request.user.username}: {bookings.count()}")  # Debugging info
     return render(request, 'booked_events.html', {'bookings': bookings})

@@ -18,10 +18,12 @@ class Event(models.Model):
     title = models.CharField(max_length=200)
     bio = models.TextField()
     venue = models.CharField(max_length=200)
-    address = models.TextField()
+    street = models.CharField(max_length=200)  # New field for street
+    city = models.CharField(max_length=100)  # New field for city
+    postcode = models.CharField(max_length=20)  # New field for postcode
     date = models.DateTimeField()
     music_genre = models.CharField(max_length=50, choices=MUSIC_GENRES)
-    organizer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="organized_events")  # Organizer (event holder)
+    organizer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="organized_events")
 
     def __str__(self):
         return self.title

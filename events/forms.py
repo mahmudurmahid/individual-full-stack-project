@@ -49,20 +49,14 @@ class CustomLoginForm(forms.Form):
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ['title', 'bio', 'venue', 'address', 'date', 'music_genre']
+        fields = ['title', 'bio', 'venue', 'street', 'city', 'postcode', 'date', 'music_genre']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'bio': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
             'venue': forms.TextInput(attrs={'class': 'form-control'}),
-            'address': forms.TextInput(attrs={'class': 'form-control'}),
+            'street': forms.TextInput(attrs={'class': 'form-control'}),
+            'city': forms.TextInput(attrs={'class': 'form-control'}),
+            'postcode': forms.TextInput(attrs={'class': 'form-control'}),
             'date': forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'}),
             'music_genre': forms.Select(attrs={'class': 'form-select'}),
         }
-
-    def clean_address(self):
-        address = self.cleaned_data.get('address')
-        if len(address) < 10 or ',' not in address:
-            raise forms.ValidationError(
-                "Please enter a valid address, including street, city, and postcode."
-            )
-        return address
