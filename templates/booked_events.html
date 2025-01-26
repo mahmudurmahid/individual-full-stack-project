@@ -58,31 +58,28 @@
       <h1 class="text-center mb-4">My Bookings</h1>
 
       {% if bookings %}
-      <div class="row">
+      <div class="cards-container booked-events-container">
         {% for booking in bookings %}
-        <div class="col-md-6 mb-4">
-          <div class="card shadow">
-            <div class="card-body">
-              <h5 class="card-title text-primary">{{ booking.event.title }}</h5>
-              <p class="card-text">
-                <strong>Date:</strong> {{ booking.event.date }}
-              </p>
-              <p class="card-text">
-                <strong>Venue:</strong> {{ booking.event.venue }}
-              </p>
-              <p class="card-text">
-                <strong>Address:</strong> {{ booking.event.address }}
-              </p>
-              <p class="card-text">
-                <strong>Tickets:</strong> {{ booking.ticket_count }}
-              </p>
-              <!-- Adjust the URL based on your use case -->
-              <a
-                href="{% url 'book_event' booking.event.id %}"
-                class="btn btn-primary"
-                >Book Again</a
-              >
-            </div>
+        <div class="card shadow">
+          <div class="card-body">
+            <h5 class="card-title text-primary">{{ booking.event.title }}</h5>
+            <p class="card-text">
+              <strong>Date:</strong> {{ booking.event.date }}
+            </p>
+            <p class="card-text">
+              <strong>Venue:</strong> {{ booking.event.venue }}
+            </p>
+            <p class="card-text">
+              <strong>Address:</strong> {{ booking.event.address }}
+            </p>
+            <p class="card-text">
+              <strong>Tickets:</strong> {{ booking.ticket_count }}
+            </p>
+            <a
+              href="{% url 'book_event' booking.event.id %}"
+              class="btn btn-primary"
+              >Book Again</a
+            >
           </div>
         </div>
         {% endfor %}

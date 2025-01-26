@@ -289,6 +289,35 @@ h3 {
 }
 
 /* Upcoming Events and My Bookings Page */
+.cards-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.cards-container .card {
+  width: 18rem;
+  min-height: 22rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.booked-events-container,
+.event-list-container {
+  max-width: 100%;
+  margin: 0 auto;
+}
 
 /* My Events Page */
 .my-events-container {
