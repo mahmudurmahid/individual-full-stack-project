@@ -27,6 +27,17 @@
    - [Structural Plane](#structural-plane)
    - [Skeleton Plane](#skeleton-plane)
    - [Surface Plane](#surface-plane)
+7. [Database Schema - Entity Relationship Diagram](#database-schema---entity-relationship-diagram)
+   - [ERD Image](#erd-image)
+   - [Overview](#overview-1)
+   - [How It Works](#how-it-works)
+   - [Security](#security)
+     - [CSRF Tokens](#csrf-tokens)
+     - [Role-Based Access Control](#role-based-access-control)
+     - [Defensive Design](#defensive-design)
+     - [Data Management](#data-management)
+   - [Future Development](#future-development)
+   - [Acknowledgments](#acknowledgments)
 
 ---
 
@@ -284,6 +295,94 @@ The surface plane of **MusicMatch** focuses on the aesthetics and visual appeal 
 
 ---
 
-### Conclusion
+Conclusion
 
 The integration of the **Scope**, **Structural**, **Skeleton**, and **Surface** planes ensures that **MusicMatch** delivers a cohesive and delightful experience for all users. These foundational design principles provide a scalable framework to enhance the platform in future iterations.
+
+## **Database Schema - Entity Relationship Diagram**
+
+### **ERD Image**
+
+![ERD for MusicMatch](#)  
+_(Replace `#` with the link to your ERD image if hosted, or upload it here.)_
+
+---
+
+### **Overview**
+
+The **Entity Relationship Diagram (ERD)** for MusicMatch demonstrates the relationships between the various components of the application and how they connect to the underlying PostgreSQL database. It outlines how users, events, bookings, and profiles are interlinked.
+
+MusicMatch leverages Django’s built-in `User` model for user authentication and authorization. When a user registers, a `user_id` is created, which acts as a unique identifier linking them to other key features such as creating and managing events, making bookings, and editing their profile. This ensures seamless data connectivity across the platform.
+
+---
+
+### **How It Works**
+
+1. **User Authentication**:
+
+   - Django's `User` model handles registration and login functionalities.
+   - A `Profile` model is linked to the `User` model using a one-to-one relationship. This allows for role-based differentiation (e.g., `customer` or `event_holder`).
+
+2. **Events and Bookings**:
+
+   - Users with the `event_holder` role can create and manage `Event` entries.
+   - Users (both `customers` and `event_holders`) can book tickets for events. The `Booking` model links users to specific events, with attributes like ticket count and booking time.
+
+3. **Django Admin Panel**:
+   - Administrators can view and manage all data, including events, profiles, and bookings, through Django’s Admin dashboard.
+   - Data integrity is ensured with `on_delete=models.CASCADE`, meaning when a user is deleted, all their related data (e.g., events, bookings) is automatically removed.
+
+---
+
+### **Security**
+
+A range of measures were implemented to protect user data and ensure the platform operates securely:
+
+#### **1. CSRF Tokens**
+
+- Every form submission includes CSRF (Cross-Site Request Forgery) tokens to validate requests and protect against unauthorized actions.
+
+#### **2. Role-Based Access Control**
+
+- The platform uses role-based logic to control user access:
+  - Customers can book events but cannot create or edit them.
+  - Event holders can create, update, and delete their own events.
+  - Admins have full access to all content and user data.
+
+#### **3. Defensive Design**
+
+- **Input Validation**:
+  - Forms validate user input to ensure data integrity and avoid errors.
+- **Error Handling**:
+  - User-friendly error messages and fallback pages guide users when issues arise.
+- **Restricted Access**:
+  - Unauthenticated users are redirected to the login page when attempting to access restricted sections like event creation or bookings.
+
+#### **4. Data Management**
+
+- All user-generated content is tied to their `user_id`. Deletion of a user cascades and removes related data (e.g., bookings, events) to prevent orphaned records.
+- Users can update or delete their profile information, but account deletion is currently unavailable. This will be included in a future release.
+
+---
+
+### **Future Development**
+
+For future versions of MusicMatch, the following features will enhance its database schema and security:
+
+1. **Payment Integration**:
+   - Adding support for secure payment gateways (e.g., Stripe or PayPal) to process event ticket purchases.
+2. **Feedback System**:
+   - Users will be able to leave reviews for events and organizers.
+3. **Enhanced User Authentication**:
+   - Integration with social login options (e.g., Google or Facebook) via Django AllAuth.
+4. **Advanced Search Filters**:
+   - Adding search options for events based on `music_genre`, `venue`, or `date`.
+
+---
+
+### **Acknowledgments**
+
+The models for MusicMatch were developed using foundational Django concepts, with inspiration drawn from various learning resources:
+
+- The **Code Institute** blog walkthrough provided a strong base for profile and booking models.
+- Practical experimentation with Django’s `User` model and the `ForeignKey` and `OneToOneField` relationships allowed for more complex interactions between entities.
