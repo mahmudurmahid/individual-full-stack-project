@@ -119,7 +119,12 @@
             <p class="card-text"><strong>Address:</strong> {{ event.address }}</p>
             <p class="card-text"><strong>Genre:</strong> {{ event.music_genre }}</p>
             <div class="mt-auto">
+              <!-- Check if 'book_event' URL is valid -->
+              {% if event.id %}
               <a href="{% url 'book_event' event.id %}" class="btn btn-primary w-100">Book Now</a>
+              {% else %}
+              <span class="btn btn-secondary w-100 disabled">Unavailable</span>
+              {% endif %}
             </div>
           </div>
         </div>

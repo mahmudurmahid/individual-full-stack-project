@@ -21,7 +21,7 @@ class Event(models.Model):
     address = models.TextField()
     date = models.DateTimeField()
     music_genre = models.CharField(max_length=50, choices=MUSIC_GENRES)
-    organizer = models.ForeignKey(User, on_delete=models.CASCADE)  # Organizer (event holder)
+    organizer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="organized_events")  # Organizer (event holder)
 
     def __str__(self):
         return self.title
