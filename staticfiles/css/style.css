@@ -1,0 +1,342 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;600;700&display=swap");
+
+/* Global Styles */
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  color: #333;
+  background-color: #c9dbba;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Poppins", sans-serif;
+  color: #faa381;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #faa381;
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background-color: #f5cda7;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #c9dbba !important;
+}
+
+.navbar-brand {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #faa381;
+}
+
+.navbar-nav .nav-link {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  color: #333;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #faa381;
+}
+
+/* Hero Section */
+.hero-carousel p {
+  color: #c9dbba;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 2rem 0;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 18rem;
+}
+
+.card-body {
+  background-color: #75704e;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  border-radius: 10px 10px 0 0;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #faa381;
+}
+
+.card-text {
+  font-family: "Lato", sans-serif;
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: #ffffff;
+  padding: 1rem 0;
+  text-align: center;
+  font-family: "Lato", sans-serif;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+    margin: 2rem 0;
+  }
+
+  .card {
+    margin-bottom: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+
+  .btn-primary {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Login Page */
+.login-form {
+  margin: 5rem auto;
+  padding: 2rem;
+  width: 400px;
+  background-color: #75704e;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form label {
+  font-size: 1.1rem;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+.login-form input {
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-form input::placeholder {
+  color: #aaa;
+}
+
+.login-form button {
+  font-size: 1.2rem;
+  padding: 0.75rem;
+  background-color: #faa381;
+  border: none;
+  border-radius: 5px;
+}
+
+.login-form button:hover {
+  background-color: #f5cda7;
+  color: #333;
+}
+
+/* Register Page */
+.register-form {
+  margin: 5rem auto;
+  padding: 2.5rem;
+  width: 400px;
+  background-color: #75704e;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+.register-form h2 {
+  font-family: "Poppins", sans-serif;
+  color: #faa381;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.register-form label {
+  font-size: 1.1rem;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+.register-form input {
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.register-form input::placeholder {
+  color: #aaa;
+}
+
+.register-form button {
+  font-size: 1.2rem;
+  padding: 0.75rem;
+  background-color: #faa381;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.register-form button:hover {
+  background-color: #f5cda7;
+  color: #333;
+}
+
+.register-form a {
+  color: #faa381;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.register-form a:hover {
+  text-decoration: underline;
+}
+
+/* Create Event Page */
+.create-event-form {
+  margin: 5rem auto;
+  padding: 2.5rem;
+  width: 400px;
+  background-color: #75704e;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+.create-event-form h2 {
+  font-family: "Poppins", sans-serif;
+  color: #faa381;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.create-event-form label {
+  font-size: 1.1rem;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+.create-event-form input,
+.create-event-form select,
+.create-event-form textarea {
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+/* Upcoming Events and My Bookings Page */
+.cards-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.cards-container .card {
+  width: 18rem;
+  min-height: 22rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.booked-events-container,
+.event-list-container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* My Events Page */
+.my-events-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.my-events-container .card {
+  width: 18rem;
+}
+
+.container {
+  max-width: 100%; /* Ensure full width usage */
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Create Event Page */
