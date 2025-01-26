@@ -650,19 +650,18 @@ TEMPLATES = [
 11. Add a Procfile for Heroku deployment:
 web: gunicorn musicmatch.wsgi
 
-## Cloning the Repository
 
+Cloning the Repository
 1. Log in to [GitHub](https://github.com/).
 2. Navigate to the repository and click the **Code** button.
 3. Copy the HTTPS, SSH, or GitHub CLI URL.
 4. Open your terminal and run the following command:
    ```bash
    git clone <repository-url>
-
 5. Navigate to the cloned directory and install dependencies:
 pip install -r requirements.txt
 
-## Forking the Repository
+Forking the Repository
 
 1. Log in to [GitHub](https://github.com/).
 2. Navigate to the repository and click **Fork** (top-right corner).
