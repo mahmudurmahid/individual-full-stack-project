@@ -78,7 +78,7 @@ The website uses the following fonts, both imported from Google Fonts:
 
 The core goal was to create a booking platform that bridges the gap between event hosts and attendees. The MVP ensures users can browse events, register/log in, and book tickets, while hosts can create and manage their events.
 
-### Site Goals
+#### Site Goals
 
 - Build a responsive website for easy access on all devices.
 - Deliver an intuitive UI for a smooth user experience.
@@ -112,52 +112,59 @@ Sprint planning ensured steady progress:
 
 ### Must-Have Features ✅
 
-#### 1. View List of Upcoming Events
+1. **View List of Upcoming Events**
 
-- **User Story:** As a site user, I can view a list of upcoming music events in Sheffield, so that I can decide which event to attend.
-- **Acceptance Criteria:**
-  - Given multiple events exist in the database, then they are displayed on the homepage.
-  - When a user visits the homepage, then they see event titles, dates, and venues.
+   - **User Story:** As a site user, I can view a list of upcoming music events in Sheffield, so that I can decide which event to attend.
+   - **Acceptance Criteria:**
+     - Given multiple events exist in the database, then they are displayed on the homepage.
+     - When a user visits the homepage, then they see event titles, dates, and venues.
 
-#### 2. User Registration and Login
+2. **User Registration and Login**
 
-- **User Story:** As a site user, I can register and log in to the site, so that I can book tickets for events.
-- **Acceptance Criteria:**
-  - Given a registration form, then users can create an account with a username, email, and password.
-  - When a user logs in, then they can access event booking features.
+   - **User Story:** As a site user, I can register and log in to the site, so that I can book tickets for events.
+   - **Acceptance Criteria:**
+     - Given a registration form, then users can create an account with a username, email, and password.
+     - When a user logs in, then they can access event booking features.
 
-#### 3. Host Event Creation
+3. **Host Event Creation**
 
-- **User Story:** As an event host, I can create and publish new music events, so that users can discover and book my events.
-- **Acceptance Criteria:**
-  - Given that a host is logged in, then they can access an event creation form.
-  - When the host submits event details (title, description, date, venue), then the event is displayed on the homepage.
+   - **User Story:** As an event host, I can create and publish new music events, so that users can discover and book my events.
+   - **Acceptance Criteria:**
+     - Given that a host is logged in, then they can access an event creation form.
+     - When the host submits event details (title, description, date, venue), then the event is displayed on the homepage.
 
-#### 4. Book a Ticket for an Event (Without Payment Integration)
+4. **Book a Ticket for an Event (Without Payment Integration)**
 
-- **User Story:** As a site user, I can book a ticket for an event, so that I can attend it.
-- **Acceptance Criteria:**
-  - Given that the user is logged in, then they can click a “Book Now” button on event pages.
-  - When the user confirms the booking, then a success message is displayed and the booking is saved.
+   - **User Story:** As a site user, I can book a ticket for an event, so that I can attend it.
+   - **Acceptance Criteria:**
+     - Given that the user is logged in, then they can click a “Book Now” button on event pages.
+     - When the user confirms the booking, then a success message is displayed and the booking is saved.
 
-#### 5. Mobile-Responsive Design
+5. **Mobile-Responsive Design**
+   - **User Story:** As a site user, I can access the website on my mobile device, so that I can browse and book events easily.
+   - **Acceptance Criteria:**
+     - Given the user is on a mobile device, then the website layout adjusts to fit the screen.
+     - When browsing events, then the interface remains easy to navigate.
 
-- **User Story:** As a site user, I can access the website on my mobile device, so that I can browse and book events easily.
-- **Acceptance Criteria:**
-  - Given the user is on a mobile device, then the website layout adjusts to fit the screen.
-  - When browsing events, then the interface remains easy to navigate.
+### Should-Have Features ⏳
+
+6. **Search and Filter Events**
+7. **Basic Host Dashboard (View Events Only)**
+8. **Booking Confirmation Page**
+
+### Could-Have Features 🚀
+
+9. **Simulated Email Confirmation**
+10. **Simple Event Search by Date**
 
 ---
 
 ## Scope Plane
 
-### Essential Features
-
-MusicMatch caters to both registered users and visitors:
-| Feature | Visitors | Registered Users |
-|--------------------|----------|-------------------|
-| View Events | Yes | Yes |
-| Book Tickets | No | Yes |
-| Host Dashboard | No | Yes (Hosts Only) |
-| Mobile Responsiveness | Yes | Yes |
-| CRUD Functionality | No | Yes |
+| Feature               | Visitors | Registered Users |
+| --------------------- | -------- | ---------------- |
+| View Events           | Yes      | Yes              |
+| Book Tickets          | No       | Yes              |
+| Host Dashboard        | No       | Yes (Hosts Only) |
+| Mobile Responsiveness | Yes      | Yes              |
+| CRUD Functionality    | No       | Yes              |
