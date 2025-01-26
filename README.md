@@ -40,7 +40,6 @@
      - [Role-Based Access Control](#role-based-access-control)
      - [Defensive Design](#defensive-design)
      - [Data Management](#data-management)
-   - [Future Development](#future-development)
 10. [User View - Registered/Unregistered](#user-view---registeredunregistered)
 11. [CRUD Functionality](#crud-functionality)
 12. [Feature Showcase](#feature-showcase)
@@ -56,6 +55,8 @@
 - [Error Pages](#error-pages)
 
 13. [Admin Panel](#admin-panel)
+
+- [Future Development](#future-development)
 
 ---
 
@@ -397,21 +398,6 @@ A range of measures were implemented to protect user data and ensure the platfor
 
 ---
 
-### **Future Development**
-
-For future versions of MusicMatch, the following features will enhance its database schema and security:
-
-1. **Payment Integration**:
-   - Adding support for secure payment gateways (e.g., Stripe or PayPal) to process event ticket purchases.
-2. **Feedback System**:
-   - Users will be able to leave reviews for events and organizers.
-3. **Enhanced User Authentication**:
-   - Integration with social login options (e.g., Google or Facebook) via Django AllAuth.
-4. **Advanced Search Filters**:
-   - Adding search options for events based on `music_genre`, `venue`, or `date`.
-
----
-
 ## **User View - Registered/Unregistered**
 
 MusicMatch has been designed to offer a seamless experience for both registered and unregistered users. The following breakdown outlines the features accessible to each user type:
@@ -530,3 +516,18 @@ The Django Admin Panel gives administrators full control over all user-generated
 - **Manage Users**: Admins can view and delete user accounts, which cascade-delete related bookings and events.
 - **Approve Content**: Admins approve event submissions and gallery uploads.
 - **Handle Bookings**: Admins can manage bookings directly from the admin interface.
+
+---
+
+### **Future Development**
+
+For future versions of MusicMatch, the following features will enhance its database schema and security:
+
+1. **Payment Integration**:
+   - Adding support for secure payment gateways (e.g., Stripe or PayPal) to process event ticket purchases.
+2. **Feedback System**:
+   - Users will be able to leave reviews for events and organizers.
+3. **Enhanced User Authentication**:
+   - Integration with social login options (e.g., Google or Facebook) via Django AllAuth.
+4. **Advanced Search Filters**:
+   - Adding search options for events based on `music_genre`, `venue`, or `date`.
