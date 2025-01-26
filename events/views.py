@@ -7,7 +7,12 @@ from .models import Event, Booking
 
 def index(request):
     """Landing page view."""
-    return render(request, 'index.html')
+    if request.user.is_authenticated:
+        if hasattr(request.user, 'profile') and request.user.profile.role == 'customer':
+            return redirect('customer_home')  # Redirect customers to their homepage
+        elif hasattr(request.user, 'profile') and request.user.profile.role == 'event_holder':
+            return redirect('event_holder_home')  # Redirect event holders to their homepage
+    return render(request, 'index.html')  # Show the landing page for non-logged-in users
 
 
 def register(request):
@@ -38,6 +43,13 @@ def login_view(request):
             )
             if user:
                 login(request, user)
+                # Handle "Remember Me" functionality
+                remember_me = request.POST.get('remember_me')  # Check for "Remember Me"
+                if not remember_me:  # If unchecked, session expires when browser closes
+                    request.session.set_expiry(0)
+                else:  # If checked or not provided, default session duration is used
+                    request.session.set_expiry(1209600)  # 2 weeks (in seconds)
+                
                 # Redirect based on user role
                 if hasattr(user, 'profile') and user.profile.role == 'customer':
                     return redirect('customer_home')

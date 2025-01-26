@@ -138,3 +138,8 @@ AUTHENTICATION_BACKENDS = [
     'music_booking.backends.CustomAuthBackend',
 ]
 
+# Keep the user logged in even after the browser is closed
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Use database-backed sessions
+SESSION_COOKIE_AGE = 1209600  # Set session expiration to 2 weeks (in seconds)
+SESSION_SAVE_EVERY_REQUEST = True  # Extend session expiration on every request
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Do not expire the session when the browser closes
