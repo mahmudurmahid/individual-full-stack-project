@@ -67,18 +67,17 @@
       <h1 class="mb-4 text-center">Your Events</h1>
 
       {% if my_events %}
-      <div class="row">
+      <!-- Use cards-container for consistent centering -->
+      <div class="cards-container">
         {% for event in my_events %}
-        <div class="col-md-4">
-          <div class="card shadow-sm mb-4">
-            <div class="card-body">
-              <h5 class="card-title">{{ event.title }}</h5>
-              <p class="card-text">
-                <strong>Venue:</strong> {{ event.venue }}<br />
-                <strong>Date:</strong> {{ event.date|date:"M d, Y H:i" }}<br />
-                <strong>Genre:</strong> {{ event.get_music_genre_display }}
-              </p>
-            </div>
+        <div class="card shadow">
+          <div class="card-body">
+            <h5 class="card-title">{{ event.title }}</h5>
+            <p class="card-text">
+              <strong>Venue:</strong> {{ event.venue }}<br />
+              <strong>Date:</strong> {{ event.date|date:"M d, Y H:i" }}<br />
+              <strong>Genre:</strong> {{ event.get_music_genre_display }}
+            </p>
           </div>
         </div>
         {% endfor %}
