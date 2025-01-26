@@ -13,5 +13,5 @@ urlpatterns = [
     path('book/<int:event_id>/', views.book_event, name='book_event'),  # Book an event (customers only)
     path('create/', views.create_event, name='create_event'),  # Create an event (event holders only)
     path('my-bookings/', views.booked_events, name='my_bookings'),  # Customer's bookings
-      path('my-events/', views.my_events, name='my_events'),  # Event holder's events
+    path('my-events/', views.my_events, name='my_events'),  # Event holder's events
 ]
