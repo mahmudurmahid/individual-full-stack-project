@@ -2,14 +2,6 @@
 
 ## Table of Contents
 
-# MusicMatch App
-
-## Table of Contents
-
-## Table of Contents
-
-## Table of Contents
-
 1. [Introduction](#introduction)
 2. [Overview](#overview)
 3. [UX - User Experience](#ux---user-experience)
