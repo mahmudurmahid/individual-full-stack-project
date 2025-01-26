@@ -61,6 +61,8 @@ Key colours include:
 - **Secondary:** Bright orange accents for calls to action (`#faa381`)
 - **Tertiary:** Light green and white for clarity and contrast (`#75704e`)
 
+![alt text](image.png)
+
 ### Fonts
 
 The website uses the following fonts, both imported from Google Fonts:
