@@ -3,7 +3,6 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from .models import Event, Profile
-import re
 
 
 class RegisterForm(UserCreationForm):
@@ -24,9 +23,10 @@ class RegisterForm(UserCreationForm):
         user = super().save(commit=False)
         if commit:
             user.save()
-            profile = Profile.objects.create(
+            # Prevent duplicate profile creation
+            Profile.objects.get_or_create(
                 user=user,
-                role=self.cleaned_data['role']
+                defaults={'role': self.cleaned_data['role']}
             )
         return user
 
@@ -61,11 +61,10 @@ class EventForm(forms.ModelForm):
             'music_genre': forms.Select(attrs={'class': 'form-select'}),
         }
 
-def clean_address(self):
-    address = self.cleaned_data.get('address')
-    # Basic validation: Ensure the address is not too short or missing commas
-    if len(address) < 10 or ',' not in address:
-        raise forms.ValidationError(
-            "Please enter a valid address, including street, city, and postcode."
-        )
-    return address
+    def clean_address(self):
+        address = self.cleaned_data.get('address')
+        if len(address) < 10 or ',' not in address:
+            raise forms.ValidationError(
+                "Please enter a valid address, including street, city, and postcode."
+            )
+        return address

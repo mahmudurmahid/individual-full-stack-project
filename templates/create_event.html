@@ -67,42 +67,77 @@
     <div class="container mt-5 create-event-form">
       <h2>Create an Event</h2>
       <form method="post">
-        {% csrf_token %} {{ form.non_field_errors }}
-
+        {% csrf_token %}
         <div class="mb-3">
           <label for="id_title" class="form-label">Event Title</label>
-          {{ form.title }}
+          <input
+            type="text"
+            id="id_title"
+            name="title"
+            class="form-control"
+            placeholder="Enter the event title"
+            required
+          />
         </div>
-
         <div class="mb-3">
           <label for="id_bio" class="form-label">Bio</label>
-          {{ form.bio }}
+          <textarea
+            id="id_bio"
+            name="bio"
+            class="form-control"
+            rows="3"
+            placeholder="Enter a brief description"
+            required
+          ></textarea>
         </div>
-
         <div class="mb-3">
           <label for="id_venue" class="form-label">Venue</label>
-          {{ form.venue }}
+          <input
+            type="text"
+            id="id_venue"
+            name="venue"
+            class="form-control"
+            placeholder="Enter the venue"
+            required
+          />
         </div>
-
         <div class="mb-3">
           <label for="id_address" class="form-label">Address</label>
-          {{ form.address }}
-          <small class="form-text text-muted"
-            >Enter a full address, e.g., 84 John Street, Sheffield, S13
-            5JG.</small
-          >
+          <input
+            type="text"
+            id="id_address"
+            name="address"
+            class="form-control"
+            placeholder="Enter the address (e.g., 123 Street, City, Postcode)"
+            required
+          />
         </div>
-
         <div class="mb-3">
           <label for="id_date" class="form-label">Date</label>
-          {{ form.date }}
+          <input
+            type="datetime-local"
+            id="id_date"
+            name="date"
+            class="form-control"
+            required
+          />
         </div>
-
         <div class="mb-3">
           <label for="id_music_genre" class="form-label">Music Genre</label>
-          {{ form.music_genre }}
+          <select
+            id="id_music_genre"
+            name="music_genre"
+            class="form-select"
+            required
+          >
+            <option value="" disabled selected>Select a genre</option>
+            <!-- Replace with dynamic options if available -->
+            <option value="rock">Rock</option>
+            <option value="pop">Pop</option>
+            <option value="jazz">Jazz</option>
+            <option value="classical">Classical</option>
+          </select>
         </div>
-
         <button type="submit" class="btn btn-primary w-100">
           Create Event
         </button>

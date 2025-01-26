@@ -120,8 +120,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # Default auto field
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Login redirect URL
+# Login/logout redirect URL
 LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = '/login/'
 
 # Email configuration
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
