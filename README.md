@@ -203,16 +203,16 @@ The scope of **MusicMatch** focuses on addressing key needs for both event organ
 - Responsive design for all devices.
 
 - Attendee/Customer Features:
-  ![alt text](image-1.png)
-  ![alt text](image-2.png)
-  ![alt text](image-3.png)
-  ![alt text](image-4.png)
+  ![alt text](media/image-1.png)
+  ![alt text](media/image-2.png)
+  ![alt text](media/image-3.png)
+  ![alt text](media/image-4.png)
 
 - Event Hoder Features:
-  ![alt text](<Screenshot 2025-01-26 at 22.14.56.png>)
-  ![alt text](<Screenshot 2025-01-26 at 22.20.00.png>)
-  ![alt text](<Screenshot 2025-01-26 at 22.17.55.png>)
-  ![alt text](<Screenshot 2025-01-26 at 22.18.51.png>)
+  ![alt text](<media/Screenshot 2025-01-26 at 22.14.56.png>)
+  ![alt text](<media/Screenshot 2025-01-26 at 22.20.00.png>)
+  ![alt text](<media/Screenshot 2025-01-26 at 22.17.55.png>)
+  ![alt text](<media/Screenshot 2025-01-26 at 22.18.51.png>)
 
 #### Future Scope:
 
