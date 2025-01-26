@@ -70,15 +70,14 @@
               <strong>Venue:</strong> {{ booking.event.venue }}
             </p>
             <p class="card-text">
-              <strong>Address:</strong> {{ booking.event.address }}
+              <strong>Address:</strong> {{ booking.event.street }}, {{
+              booking.event.city }}, {{ booking.event.postcode }}
             </p>
             <p class="card-text">
               <strong>Tickets:</strong> {{ booking.ticket_count }}
             </p>
-            <a
-              href="{% url 'book_event' booking.event.id %}"
-              class="btn btn-primary"
-              >Book Again</a
+            <a href="{% url 'event_list' %}" class="btn btn-primary"
+              >Book More Events</a
             >
           </div>
         </div>
