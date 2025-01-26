@@ -8,6 +8,8 @@
 
 ## Table of Contents
 
+## Table of Contents
+
 1. [Introduction](#introduction)
 2. [Overview](#overview)
 3. [UX - User Experience](#ux---user-experience)
@@ -55,6 +57,11 @@
 13. [Admin Panel](#admin-panel)
 14. [Future Development](#future-development)
 15. [Technologies & Tools Used](#technologies--tools-used)
+16. [Deployment](#deployment)
+    - [Connecting to GitHub](#connecting-to-github)
+    - [Django Project Setup](#django-project-setup)
+    - [Cloning the Repository](#cloning-the-repository)
+    - [Forking the Repository](#forking-the-repository)
 
 ---
 
@@ -582,3 +589,85 @@ For future versions of MusicMatch, the following features will enhance its datab
 ---
 
 ### **Testing**
+
+# Deployment
+
+## Connecting to GitHub
+
+To begin this project from scratch, follow these steps:
+
+1. Log in to [GitHub](https://github.com/) or create a new account.
+2. Click **New** to create a new repository.
+3. Name your repository (e.g., `MusicMatch`) and add a description.
+4. Initialize the repository with a `README.md` file.
+5. Clone the repository to your local development environment or IDE (e.g., Gitpod or VS Code).
+
+---
+
+## Django Project Setup
+
+1. Install Django and required libraries:
+   pip install 'django<4' gunicorn pip install dj_database_url psycopg2 pip install dj3-cloudinary-storage
+2. Create a `requirements.txt` file to list all installed dependencies:
+   pip freeze > requirements.txt
+3. Start a new Django project and app:
+   django-admin startproject musicmatch . python manage.py startapp events
+4. Add the app to `INSTALLED_APPS` in `settings.py`:
+   INSTALLED_APPS = [ ..., 'events', ]
+5. Create a superuser to access the Django admin panel:
+   python manage.py createsuperuser
+6. Apply database migrations:
+   python manage.py migrate
+7. Create an `env.py` file to store sensitive environment variables:
+
+````python
+import os
+
+os.environ["DATABASE_URL"] = "your_database_url_here"
+os.environ["SECRET_KEY"] = "your_secret_key_here"
+8. Update settings.py to use the env.py file:
+import os
+import dj_database_url
+
+if os.path.exists("env.py"):
+    import env
+
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
+9. Set up the templates directory in settings.py:
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
+TEMPLATES = [
+    {
+        ...,
+        'DIRS': [TEMPLATES_DIR],
+    }
+]
+10. Create static, media, and templates directories in your project folder.
+11. Add a Procfile for Heroku deployment:
+web: gunicorn musicmatch.wsgi
+
+## Cloning the Repository
+
+1. Log in to [GitHub](https://github.com/).
+2. Navigate to the repository and click the **Code** button.
+3. Copy the HTTPS, SSH, or GitHub CLI URL.
+4. Open your terminal and run the following command:
+   ```bash
+   git clone <repository-url>
+
+5. Navigate to the cloned directory and install dependencies:
+pip install -r requirements.txt
+
+## Forking the Repository
+
+1. Log in to [GitHub](https://github.com/).
+2. Navigate to the repository and click **Fork** (top-right corner).
+3. You now have a copy of the repository in your GitHub account.
+4. Clone and configure the forked repository by following the steps in the **Cloning the Repository** section.
+
+
+````
