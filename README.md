@@ -1,131 +1,161 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# MusicMatch App
 
-Welcome Mahmudur Mahid,
+## Table of Contents
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
-
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
-
-## Gitpod Reminders
-
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
-
-`python3 -m http.server`
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
-
-### Connecting your Mongo database
-
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**June 18, 2024,** Add Mongo back into template
-
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
-
-**May 28 2024:** Fix Mongo and Links installs
-
-**April 26 2024:** Update node version to 16
-
-**September 20 2023:** Update Python version to 3.9.17.
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+1. [Introduction](#introduction)
+2. [Overview](#overview)
+3. [UX - User Experience](#ux---user-experience)
+   - [Design Inspiration](#design-inspiration)
+   - [Colour Scheme](#colour-scheme)
+   - [Fonts](#fonts)
+4. [Project Planning](#project-planning)
+   - [Strategy Plane](#strategy-plane)
+   - [Site Goals](#site-goals)
+   - [Agile Methodologies](#agile-methodologies)
+   - [MoSCoW Prioritization](#moscow-prioritization)
+   - [Sprints](#sprints)
+5. [User Stories](#user-stories)
+   - [Must-Have Features ✅](#must-have-features-)
+   - [Should-Have Features ⏳](#should-have-features-)
+   - [Could-Have Features 🚀](#could-have-features-)
+6. [Scope Plane](#scope-plane)
 
 ---
 
-Happy coding!
+## Introduction
+
+**MusicMatch** is a dynamic music event booking platform designed for the vibrant music scene in the UK. Built as a beginner Django project, MusicMatch focuses on enabling hosts to showcase their events while allowing users to easily book tickets. It leverages responsive design, CRUD functionality, and database management to deliver an intuitive and functional user experience.
+
+MusicMatch was developed for educational purposes as part of my journey to learn Django and further my skills in full-stack web development using Python, Bootstrap frameworks, and AI tools such as Microsoft Co-Pilot and DALL-E.
+
+**View the live site here:** [MusicMatch Live Site](https://music-match-483fb192c3d8.herokuapp.com/)  
+**Admin access with relevant sign-in information:** [MusicMatch Admin Login](https://music-match-483fb192c3d8.herokuapp.com/admin)
+
+---
+
+## Overview
+
+MusicMatch is a responsive, user-friendly booking platform catering to music enthusiasts and event organisers. The website allows users to:
+
+- View a list of upcoming music events.
+- Register and log in to book tickets for events.
+- Enable hosts to create, publish, and manage events.
+- Deliver a seamless mobile-first experience for easy navigation and booking.
+
+MusicMatch seeks to address the needs of Sheffield’s vibrant music community by providing a centralised platform to connect event hosts and attendees. This MVP (Minimum Viable Product) is the foundation for further enhancements such as payment integration and advanced search features.
+
+---
+
+## UX - User Experience
+
+### Design Inspiration
+
+The design was inspired by the thriving music culture of the UK and the need for a modern, clean interface for users to interact with the platform easily. The focus was on simplicity and functionality, ensuring users could find and book events with minimal effort. Using calming fonts (Poppins for headlines and Lato for body text) enhances readability and maintains a professional, welcoming aesthetic.
+
+### Colour Scheme
+
+The colour palette was selected to reflect the UK’s vibrant yet grounded music scene, inspired by the 1970s with a modern-day minimalist design approach.  
+Key colours include:
+
+- **Primary:** Calm green for navigation and background (`#c9dbba`)
+- **Secondary:** Bright orange accents for calls to action (`#faa381`)
+- **Tertiary:** Light green and white for clarity and contrast (`#75704e`)
+
+### Fonts
+
+The website uses the following fonts, both imported from Google Fonts:
+
+- **Poppins:** A clean and modern sans-serif font for headlines.
+- **Lato:** A versatile sans-serif font for body text, ensuring optimal readability.
+
+---
+
+## Project Planning
+
+### Strategy Plane
+
+The core goal was to create a booking platform that bridges the gap between event hosts and attendees. The MVP ensures users can browse events, register/log in, and book tickets, while hosts can create and manage their events.
+
+### Site Goals
+
+- Build a responsive website for easy access on all devices.
+- Deliver an intuitive UI for a smooth user experience.
+- Create scalable features to support future enhancements such as payment processing.
+
+### Agile Methodologies
+
+Using **GitHub Projects**, tasks were organized into user stories, development tasks, and testing tasks. Agile methodologies ensured timely delivery of the MVP, with room for additional features based on available time.
+
+### MoSCoW Prioritization
+
+- **Must-Have:** User registration, event listing, ticket booking, mobile responsiveness.
+- **Should-Have:** Search and filter functionality, basic host dashboard, booking confirmation page.
+- **Could-Have:** Simulated email confirmation, simple event search by date.
+- **Won’t-Have:** Payment processing and advanced analytics in this phase.
+
+### Sprints
+
+Sprint planning ensured steady progress:
+| Sprint | Content | Start Date | End Date |
+|--------|---------------------------------|---------------|---------------|
+| #1 | Project Setup & Database Design | Jan 10, 2025 | Jan 12, 2025 |
+| #2 | User Authentication & Navigation | Jan 12, 2025 | Jan 15, 2025 |
+| #3 | Event Creation & Booking | Jan 15, 2025 | Jan 19, 2025 |
+| #4 | Frontend Design | Jan 20, 2025 | Jan 23, 2025 |
+| #5 | Testing & Deployment | Jan 23, 2025 | Jan 25, 2025 |
+
+---
+
+## User Stories
+
+### Must-Have Features ✅
+
+#### 1. View List of Upcoming Events
+
+- **User Story:** As a site user, I can view a list of upcoming music events in Sheffield, so that I can decide which event to attend.
+- **Acceptance Criteria:**
+  - Given multiple events exist in the database, then they are displayed on the homepage.
+  - When a user visits the homepage, then they see event titles, dates, and venues.
+
+#### 2. User Registration and Login
+
+- **User Story:** As a site user, I can register and log in to the site, so that I can book tickets for events.
+- **Acceptance Criteria:**
+  - Given a registration form, then users can create an account with a username, email, and password.
+  - When a user logs in, then they can access event booking features.
+
+#### 3. Host Event Creation
+
+- **User Story:** As an event host, I can create and publish new music events, so that users can discover and book my events.
+- **Acceptance Criteria:**
+  - Given that a host is logged in, then they can access an event creation form.
+  - When the host submits event details (title, description, date, venue), then the event is displayed on the homepage.
+
+#### 4. Book a Ticket for an Event (Without Payment Integration)
+
+- **User Story:** As a site user, I can book a ticket for an event, so that I can attend it.
+- **Acceptance Criteria:**
+  - Given that the user is logged in, then they can click a “Book Now” button on event pages.
+  - When the user confirms the booking, then a success message is displayed and the booking is saved.
+
+#### 5. Mobile-Responsive Design
+
+- **User Story:** As a site user, I can access the website on my mobile device, so that I can browse and book events easily.
+- **Acceptance Criteria:**
+  - Given the user is on a mobile device, then the website layout adjusts to fit the screen.
+  - When browsing events, then the interface remains easy to navigate.
+
+---
+
+## Scope Plane
+
+### Essential Features
+
+MusicMatch caters to both registered users and visitors:
+| Feature | Visitors | Registered Users |
+|--------------------|----------|-------------------|
+| View Events | Yes | Yes |
+| Book Tickets | No | Yes |
+| Host Dashboard | No | Yes (Hosts Only) |
+| Mobile Responsiveness | Yes | Yes |
+| CRUD Functionality | No | Yes |
