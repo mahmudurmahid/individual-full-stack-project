@@ -3,8 +3,6 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-
-# Create your models here.
 class Event(models.Model):
     MUSIC_GENRES = [
         ('rock', 'Rock'),
@@ -15,16 +13,15 @@ class Event(models.Model):
         ('electronic', 'Electronic'),
         ('country', 'Country'),
         ('reggae', 'Reggae'),
-        # Add more genres here
     ]
 
     title = models.CharField(max_length=200)
     bio = models.TextField()
     venue = models.CharField(max_length=200)
-    address = models.TextField(blank=False)
+    address = models.TextField()
     date = models.DateTimeField()
-    music_genre = models.CharField(max_length=50, choices=MUSIC_GENRES, verbose_name="Music Genre")
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    music_genre = models.CharField(max_length=50, choices=MUSIC_GENRES)
+    organizer = models.ForeignKey(User, on_delete=models.CASCADE)  # Organizer (event holder)
 
     def __str__(self):
         return self.title
@@ -32,9 +29,9 @@ class Event(models.Model):
 
 class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    event = models.ForeignKey('Event', on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
     booked_on = models.DateTimeField(auto_now_add=True)
-    ticket_count = models.PositiveIntegerField(default=1)  # Default is 1 ticket
+    ticket_count = models.PositiveIntegerField(default=1)
 
     def __str__(self):
         return f"{self.user.username} - {self.event.title} ({self.ticket_count} tickets)"

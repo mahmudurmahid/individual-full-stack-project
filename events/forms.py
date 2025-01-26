@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from .models import Event, Profile
@@ -11,7 +11,7 @@ class RegisterForm(UserCreationForm):
         ('event_holder', 'Event Holder'),
     )
     email = forms.EmailField()
-    role = forms.ChoiceField(choices=ROLE_CHOICES)
+    role = forms.ChoiceField(choices=ROLE_CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
 
@@ -23,29 +23,27 @@ class RegisterForm(UserCreationForm):
         user = super().save(commit=False)
         if commit:
             user.save()
-            # Prevent duplicate profile creation
-            Profile.objects.get_or_create(
+            Profile.objects.create(
                 user=user,
-                defaults={'role': self.cleaned_data['role']}
+                role=self.cleaned_data['role'],
+                first_name=self.cleaned_data['first_name'],
+                last_name=self.cleaned_data['last_name'],
             )
         return user
 
 
-class CustomLoginForm(AuthenticationForm):
+class CustomLoginForm(forms.Form):
     username = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
     def clean(self):
-        cleaned_data = super().clean()
-        email = cleaned_data.get('username')
-        password = cleaned_data.get('password')
-
-        if not User.objects.filter(email=email).exists():
-            raise forms.ValidationError("No account found with this email.")
-
-        user = authenticate(username=email, password=password)
-        if not user:
-            raise forms.ValidationError("Invalid credentials. Please try again.")
-        return cleaned_data
+        email = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+        if email and password:
+            user = authenticate(username=email, password=password)
+            if not user:
+                raise forms.ValidationError("Invalid email or password.")
+        return self.cleaned_data
 
 
 class EventForm(forms.ModelForm):
