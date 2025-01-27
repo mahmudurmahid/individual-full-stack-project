@@ -815,7 +815,7 @@ All user stories were tested manually by performing the following actions:
 
 The site was tested on the following devices for responsiveness:
 
-- Desktop: Chrome, Firefox
+- Desktop: Chrome, Firefox, Safari
 - Mobile: iPhone (Safari), Android (Chrome)
 
 #### Browser Compatibility
@@ -831,7 +831,7 @@ The application was verified to work on the following browsers:
 The site was checked for basic accessibility using browser dev tools to ensure proper color contrast and screen reader support. Using the WAVE Accessibility Evaluation tool, I found the following results:
 ![alt text](media/Screenshot_2025-01-27_at_14.07.35)
 
-While the WAVE Accessibility Evaluation tool has identified contrast errors and six additional alerts, the current design prioritizes maintaining the website's cohesive visual identity. These alerts do not indicate outright accessibility violations but rather areas for potential enhancement. Moving forward, we are committed to refining our design to better align with accessibility standards while preserving the platform’s aesthetic and branding goals. In the interim, users can leverage browser tools or assistive technologies to further optimize their experience. I have changed the hero text background-color to reduce the contrast errors, however.
+While the WAVE Accessibility Evaluation tool has identified contrast errors and six additional alerts, the current design prioritizes maintaining the website's cohesive visual identity. These alerts do not indicate outright accessibility violations but rather areas for potential enhancement. Moving forward, we are committed to refining our design to better align with accessibility standards while preserving the platform’s aesthetic and branding goals. In the interim, users can leverage browser tools or assistive technologies to further optimize their experience.
 
 ## Credits
 
