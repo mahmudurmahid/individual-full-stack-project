@@ -450,8 +450,7 @@ The following describes the structure of the database and the relationships betw
 
 ### **ERD Image**
 
-![ERD for MusicMatch](#)  
-_(Replace `#` with the link to your ERD image if hosted, or upload it here.)_
+![alt text](media/ERD.png)
 
 ---
 
