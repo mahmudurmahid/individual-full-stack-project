@@ -319,6 +319,16 @@ h3 {
   margin: 0 auto;
 }
 
+.btn-success {
+  background-color: #faa381;
+  border: 1px solid #faa381;
+}
+
+.btn-danger {
+  background-color: #c9dbba;
+  border-color: #f5cda7;
+}
+
 /* My Events Page */
 .my-events-container {
   display: flex;

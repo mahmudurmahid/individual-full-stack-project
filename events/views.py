@@ -161,3 +161,20 @@ def my_bookings(request):
     """View to display all bookings made by the logged-in user."""
     bookings = Booking.objects.filter(user=request.user)
     return render(request, 'booked_events.html', {'bookings': bookings})
+
+@login_required
+def add_ticket(request, booking_id):
+    """View to add a ticket to an existing booking."""
+    booking = get_object_or_404(Booking, id=booking_id, user=request.user)
+    booking.ticket_count += 1
+    booking.save()
+    return redirect('my_bookings')
+
+@login_required
+def remove_ticket(request, booking_id):
+    """View to remove a ticket from an existing booking."""
+    booking = get_object_or_404(Booking, id=booking_id, user=request.user)
+    if booking.ticket_count > 1:  # Ensure ticket count does not go below 1
+        booking.ticket_count -= 1
+        booking.save()
+    return redirect('my_bookings')
