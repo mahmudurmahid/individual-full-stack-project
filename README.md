@@ -375,6 +375,79 @@ The integration of the **Scope**, **Structural**, **Skeleton**, and **Surface** 
 
 ## **Database Schema - Entity Relationship Diagram**
 
+The following describes the structure of the database and the relationships between entities:
+
+### Entities
+
+#### 1. **User**
+
+- This is provided by Django's built-in User model.
+- **Fields**:
+  - `id`
+  - `username`
+  - `email`
+  - `password`
+  - (Other default fields from the Django User model)
+
+#### 2. **Profile**
+
+- **Fields**:
+  - `id`
+  - `user_id` (One-to-One relationship with `User`)
+  - `role` (e.g., Customer or Event Holder)
+  - `venue_name` (optional, applicable to Event Holders)
+- **Relationship**: One-to-One with `User`
+
+#### 3. **Event**
+
+- **Fields**:
+  - `id`
+  - `title` (Event title)
+  - `bio` (Event description)
+  - `venue` (Venue name)
+  - `street` (Street address)
+  - `city` (City of the event)
+  - `postcode` (Postcode of the event)
+  - `date` (Event date and time)
+  - `music_genre` (Event genre, e.g., Rock, Pop, etc.)
+  - `organizer_id` (ForeignKey to `User`, representing the event organizer)
+- **Relationship**: Many-to-One with `User` (as organizer)
+
+#### 4. **Booking**
+
+- **Fields**:
+  - `id`
+  - `user_id` (ForeignKey to `User`)
+  - `event_id` (ForeignKey to `Event`)
+  - `booked_on` (Timestamp of booking)
+  - `ticket_count` (Number of tickets booked)
+- **Relationships**:
+  - Many-to-One with `User` (as the booking user)
+  - Many-to-One with `Event` (as the booked event)
+
+---
+
+### Relationships
+
+1. **User and Profile**:
+
+   - A `User` can have **one Profile** (One-to-One relationship).
+   - A `Profile` is associated with exactly one `User`.
+
+2. **User and Events**:
+
+   - A `User` can organize **multiple Events** (One-to-Many relationship).
+   - An `Event` is associated with one `User` (as the organizer).
+
+3. **User and Bookings**:
+
+   - A `User` can make **multiple Bookings** for different events (One-to-Many relationship).
+   - A `Booking` is associated with one `User`.
+
+4. **Event and Bookings**:
+   - An `Event` can have **multiple Bookings** associated with it (One-to-Many relationship).
+   - A `Booking` is associated with one `Event`.
+
 ### **ERD Image**
 
 ![ERD for MusicMatch](#)  
