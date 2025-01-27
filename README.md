@@ -64,7 +64,15 @@
     - [Using AI to Optimize Code for Performance and UX](#using-ai-to-optimize-code-for-performance-and-ux)
     - [Using AI to Create Automated Unit Tests](#using-ai-to-create-automated-unit-tests)
     - [Reflection on AI’s Role in the Development Process](#reflection-on-ais-role-in-the-development-process)
-18. [Credits](#credits)
+18. [Testing](#testing)
+
+- [Validation](#validation)
+- [Manual Testing](#manual-testing)
+- [Device Testing](#device-testing)
+- [Browser Compatibility](#browser-compatibility)
+- [Accessibility](#accessibility)
+
+19. [Credits](#credits)
     - [Code](#code)
     - [Media](#media)
     - [Acknowledgements](#acknowledgements)
@@ -782,13 +790,13 @@ The **W3C Validator** was used to validate HTML files. Below are the issues enco
 | Other Templates | Parse errors on `{% load static %}` and unrecognized template tags like `{% for %}` and `{% if %}` blocks. | Verified these errors occur only because Django template tags aren't recognized in raw HTML validation. |
 
 Examples of W3C Validator results:
-![alt text](media/Screenshot%202025-01-27%20at%2009.50.59.png)
-![alt text](media/<Screenshot 2025-01-27 at 09.51.16.png>)
+![alt text](media/Screenshot_2025-01-27_at_09.50.59.png)
+![alt text](media/Screenshot_2025-01-27_at_09.51.16.png)
 
 #### CSS Validation
 
 No errors or warnings were detected in the `style.css` file.
-![alt text](media/Screenshot 2025-01-27 at 09.50.59.png)
+![alt text](media/Screenshot_2025-01-27_at_09.50.59.png)
 
 ---
 
