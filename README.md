@@ -54,6 +54,11 @@
     - [Django Project Setup](#django-project-setup)
     - [Cloning the Repository](#cloning-the-repository)
     - [Forking the Repository](#forking-the-repository)
+17. [Credits](#credits)
+    - [Code](#code)
+    - [Media](#media)
+    - [Acknowledgements](#acknowledgements)
+    - [Additional Reading/Tutorials](#additional-readingtutorials)
 
 ---
 
@@ -620,6 +625,8 @@ os.environ["SECRET_KEY"] = "your_secret_key_here"
 ```
 
 8. Update settings.py to use the env.py file:
+
+```python
    import os
    import dj_database_url
 
@@ -640,8 +647,9 @@ TEMPLATES = [
 }
 ] 10. Create static, media, and templates directories in your project folder. 11. Add a Procfile for Heroku deployment:
 web: gunicorn musicmatch.wsgi
+```
 
-Cloning the Repository
+## Cloning the Repository
 
 1. Log in to [GitHub](https://github.com/).
 2. Navigate to the repository and click the **Code** button.
@@ -653,7 +661,7 @@ Cloning the Repository
 5. Navigate to the cloned directory and install dependencies:
    pip install -r requirements.txt
 
-Forking the Repository
+## Forking the Repository
 
 1. Log in to [GitHub](https://github.com/).
 2. Navigate to the repository and click **Fork** (top-right corner).
