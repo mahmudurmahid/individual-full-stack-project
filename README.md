@@ -304,7 +304,26 @@ The skeleton phase involved creating wireframes to map out user interactions and
 
 #### Wireframe Highlights:
 
-Mobile/Tablet Homepage:
+Mobile/Tablet/Desktop Homepage:
+![alt text](media/Homepage_Wireframe.png)
+
+Register:
+![alt text](media/Register.png)
+
+Login:
+![alt text](media/Login.png)
+
+Customer Upcoming Events:
+![alt text](media/Upcoming_Events.png)
+
+Customer Booked Events:
+![alt text](media/Booked_Events.png)
+
+Event Holder Made Events:
+![alt text](media/My_Events.png)
+
+Event Holder Create Events:
+![alt text](media/Create_Event.png)
 
 - **Homepage:**
   - Hero section with a welcome message and CTA buttons for exploring events or signing up.
@@ -317,7 +336,7 @@ Mobile/Tablet Homepage:
 
 #### Design Tools Used:
 
-- Wireframes were created using Figma to ensure precision and clarity.
+- Wireframes were created using Balsamiq to ensure precision and clarity.
 - Focus on a grid-based layout to ensure modularity.
 
 ---
