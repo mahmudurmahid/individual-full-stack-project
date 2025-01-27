@@ -62,8 +62,13 @@ h3 {
 }
 
 /* Hero Section */
+.hero-carousel h1 {
+  background-color: #75704e;
+}
+
 .hero-carousel p {
   color: #c9dbba;
+  background-color: #75704e;
 }
 
 /* Features Section */

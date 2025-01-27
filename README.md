@@ -672,7 +672,7 @@ web: gunicorn musicmatch.wsgi
 3. Copy the HTTPS, SSH, or GitHub CLI URL.
 4. Open your terminal and run the following command:
    ```bash
-   git clone <repository-url>
+   git clone <https://github.com/mahmudurmahid/individual-full-stack-project>
    ```
 5. Navigate to the cloned directory and install dependencies:
    pip install -r requirements.txt
