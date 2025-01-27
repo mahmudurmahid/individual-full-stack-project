@@ -174,7 +174,13 @@ def add_ticket(request, booking_id):
 def remove_ticket(request, booking_id):
     """View to remove a ticket from an existing booking."""
     booking = get_object_or_404(Booking, id=booking_id, user=request.user)
-    if booking.ticket_count > 1:  # Ensure ticket count does not go below 1
+    
+    if booking.ticket_count > 0:  # Allow ticket count to reach 0
         booking.ticket_count -= 1
         booking.save()
+    
+    # If ticket count reaches 0, you can decide to delete the booking
+    if booking.ticket_count == 0:
+        booking.delete()
+
     return redirect('my_bookings')
