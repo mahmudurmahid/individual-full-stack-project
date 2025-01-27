@@ -304,6 +304,8 @@ The skeleton phase involved creating wireframes to map out user interactions and
 
 #### Wireframe Highlights:
 
+Mobile/Tablet Homepage:
+
 - **Homepage:**
   - Hero section with a welcome message and CTA buttons for exploring events or signing up.
   - Upcoming events preview with a "View All Events" link.
@@ -860,7 +862,7 @@ The following resources, blogs, and tutorials were instrumental in helping me bu
 The following resources provided the media and visuals used in this project:
 
 - **DALL-E**: For creating project-specific images and design elements.
-- **Figma**: Used to design custom graphics and icons.
+- **Balsamiq**: Used to design custom wireframes.
 
 ### Acknowledgements
 
