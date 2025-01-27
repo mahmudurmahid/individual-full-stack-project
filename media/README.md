@@ -595,8 +595,6 @@ For future versions of MusicMatch, the following features will enhance its datab
 
 ---
 
-### **Testing**
-
 # Deployment
 
 ## Connecting to GitHub
@@ -747,6 +745,82 @@ AI tools like ChatGPT and GitHub Copilot significantly enhanced the efficiency a
   - **Over-Reliance Risk:** Over-reliance on AI for debugging or code generation could potentially reduce opportunities for deeper learning and problem-solving.
 
 - **Overall Impact:** The integration of AI tools not only accelerated development but also improved the final product by optimizing performance, enhancing user experience, and ensuring robust test coverage. However, the need for human oversight and customization remained critical for achieving the desired outcomes.
+
+## Testing
+
+### Validation
+
+#### Python Validation
+
+I used **CI Python Linter** to check the Python files for compliance with PEP 8 standards. Below are the results and corresponding fixes:
+
+| **File**    | **Line**   | **Issue**                            | **Fix Implemented**                                                             |
+| ----------- | ---------- | ------------------------------------ | ------------------------------------------------------------------------------- |
+| `models.py` | 6          | E302 expected 2 blank lines, found 1 | Added blank lines to maintain proper spacing between class definitions.         |
+|             | 26, 39, 48 | E501 line too long (> 79 characters) | Broke long lines into multiple lines using appropriate line breaks.             |
+|             | 54, 59     | E302 expected 2 blank lines, found 1 | Added blank lines to separate functions and classes properly.                   |
+| `views.py`  | Multiple   | E302, E501, W293                     | Adjusted spacing and broke long lines into shorter ones for better readability. |
+|             | 56         | W293 blank line contains whitespace  | Removed trailing whitespace.                                                    |
+| `forms.py`  | 7, 73, 92  | E302 expected 2 blank lines, found 1 | Added blank lines to improve spacing between class and function definitions.    |
+|             | 43, 78, 95 | E501 line too long (> 79 characters) | Split overly long lines into multiple shorter lines.                            |
+| `urls.py`   | 10         | E501 line too long (> 79 characters) | Broke long URL patterns into separate lines to comply with PEP 8.               |
+
+#### Fix Implementation Summary
+
+- **Spacing Issues (E302):** Fixed by ensuring two blank lines between top-level class and function definitions.
+- **Line Length Issues (E501):** Fixed by wrapping long lines at appropriate breaking points.
+- **Trailing Whitespace (W293):** Removed extra spaces to ensure a clean structure.
+
+#### HTML Validation
+
+The **W3C Validator** was used to validate HTML files. Below are the issues encountered and the fixes applied:
+
+| **File**        | **Issue**                                                                                                  | **Fix Implemented**                                                                                     |
+| --------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `index.html`    | Trailing slashes on void elements interact badly with unquoted attribute values.                           | Removed unnecessary trailing slashes from void elements like `<meta>` and `<link>`.                     |
+|                 | Illegal character in `href` attributes using `{% url %}`.                                                  | Ensured `{% url %}` syntax is only interpreted in Django templates during rendering.                    |
+| Other Templates | Parse errors on `{% load static %}` and unrecognized template tags like `{% for %}` and `{% if %}` blocks. | Verified these errors occur only because Django template tags aren't recognized in raw HTML validation. |
+
+Examples of W3C Validator results:
+![alt text](media/Screenshot%202025-01-27%20at%2009.50.59.png)
+![alt text](media/<Screenshot 2025-01-27 at 09.51.16.png>)
+
+#### CSS Validation
+
+No errors or warnings were detected in the `style.css` file.
+![alt text](media/Screenshot 2025-01-27 at 09.50.59.png)
+
+---
+
+### Manual Testing
+
+#### User Stories
+
+All user stories were tested manually by performing the following actions:
+
+- **Event Creation:** Verified that event holders can successfully create new events with valid data.
+- **Event Booking:** Confirmed that users can book events without duplicate bookings.
+- **Login and Registration:** Tested login, registration, and "Remember Me" functionality.
+- **Filters:** Checked that filtering events by genre, city, and date works correctly.
+
+#### Device Testing
+
+The site was tested on the following devices for responsiveness:
+
+- Desktop: Chrome, Firefox
+- Mobile: iPhone (Safari), Android (Chrome)
+
+#### Browser Compatibility
+
+The application was verified to work on the following browsers:
+
+- Google Chrome (latest)
+- Mozilla Firefox (latest)
+- Safari (iOS)
+
+#### Accessibility
+
+The site was checked for basic accessibility using browser dev tools to ensure proper color contrast and screen reader support.
 
 ## Credits
 
