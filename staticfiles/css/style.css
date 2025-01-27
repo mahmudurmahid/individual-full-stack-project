@@ -62,8 +62,13 @@ h3 {
 }
 
 /* Hero Section */
+.hero-carousel h1 {
+  background-color: #75704e;
+}
+
 .hero-carousel p {
   color: #c9dbba;
+  background-color: #75704e;
 }
 
 /* Features Section */
@@ -319,6 +324,16 @@ h3 {
   margin: 0 auto;
 }
 
+.btn-success {
+  background-color: #faa381;
+  border: 1px solid #faa381;
+}
+
+.btn-danger {
+  background-color: #c9dbba;
+  border-color: #f5cda7;
+}
+
 /* My Events Page */
 .my-events-container {
   display: flex;
@@ -334,9 +349,7 @@ h3 {
 }
 
 .container {
-  max-width: 100%; /* Ensure full width usage */
+  max-width: 100%;
   padding-left: 15px;
   padding-right: 15px;
 }
-
-/* Create Event Page */
