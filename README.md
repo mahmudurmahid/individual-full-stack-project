@@ -47,9 +47,6 @@
     - [Profile](#profile)
     - [Events](#events)
     - [Bookings](#bookings)
-    - [Gallery](#gallery)
-    - [Visit Us](#visit-us)
-    - [Error Pages](#error-pages)
 13. [Admin Panel](#admin-panel)
 14. [Future Development](#future-development)
 15. [Technologies & Tools Used](#technologies--tools-used)
@@ -543,48 +540,44 @@ MusicMatch enables users to Create, Read, Update, and Delete data across various
 
 ## **Feature Showcase**
 
-Below are screenshots showcasing MusicMatch features across different devices:
-
 ### **Header/Navigation & Footer**
 
 #### **Header & Navigation**
 
 - The navigation bar allows all users to move around the site easily.
-- Registered users will see a "Profile" icon, which is hidden from unregistered users.
-- Tooltips appear on hover to explain the navigation icons.
+- When logged in, customers will see exclusive functions for them, namely viewing all upcoming events and my bookings, whereas event holders will see my events and create an event
+- Registered users will see a "Logout" feature, which is hidden from unregistered users.
 
 #### **Footer**
 
-- The footer includes links to MusicMatch’s social media accounts (to be added in future development).
-- Tooltips assist users who may be unfamiliar with the icons.
+- The footer includes a simple copyright message to provide the site legitimacy.
 
 ---
 
 ### **Home Page**
 
-- **Unregistered Users**: A "Sign Up" button is prominently displayed in the hero section, inviting new users to join the community.
-- **Registered Users**: A "Book Today!" button replaces the "Sign Up" button, leading users to the booking page.
+- **Unregistered Users**: A "Register" button is prominently displayed in the navbar section, inviting new users to join the community. They are also sent to register links when they click on any buttons in the hero and features sections.
+- **Registered Users**: A "Logout" in the navbar replaces the login and the register function is replaced with their respective event holder or customer functions.
 
 ---
 
 ### **Registration/Sign-Up**
 
-- Users must enter their username, email, and password.
-- Feedback messages ensure form completeness before submission.
-- A "Forgot Password" feature is included but not fully implemented in the current version.
+- Users must enter their username, email, first name, last name, their role, and password.
+- Users will be sent to their respective customer or event holder homepages after login.
 
 ---
 
 ### **Profile**
 
-- **Registered Users**: Profiles are created upon registration and can be personalized with a display name, profile picture, and bio.
-- In future iterations, profiles will be shareable with other users and include advanced features such as direct messaging.
+- **Registered Users**:
+- In future iterations, profiles created upon registration and can be personalized with a display name, profile picture, and bio.
 
 ---
 
 ### **Events**
 
-- **Unregistered Users**: Can view events but cannot book tickets.
+- **Unregistered Users**: Cannot view upcoming events, book tickets, create events, or see what events they have created
 - **Registered Users**: Have full access to book events and manage their bookings.
 - Event Holders can create, update, and delete events.
 
@@ -592,33 +585,9 @@ Below are screenshots showcasing MusicMatch features across different devices:
 
 ### **Bookings**
 
-- **Registered Users Only**: Users can create, update, and delete bookings. A dropdown menu is available for selecting dates and times.
-- **Feedback on Bookings**: Users receive instant feedback on the status of their bookings, such as confirmation or unavailable time slots.
-- In future development, booking confirmations will include email notifications, and unavailable slots will be visually shaded.
-
----
-
-### **Gallery**
-
-- **Unregistered Users**: Can view photos uploaded by others.
-- **Registered Users**: Can upload and delete their own photos.
-- In future releases, guidelines for content and AI moderation will be implemented to ensure appropriate uploads.
-
----
-
-### **Visit Us**
-
-- Includes interactive Google Maps to display event venues and provide navigation assistance. In future releases, this page will allow users to leave reviews.
-
----
-
-### **Error Pages**
-
-Custom error pages were designed for:
-
-- **403 Forbidden**: Access restricted to unauthorized users.
-- **404 Not Found**: Displays a "Back to Homepage" button for navigation.
-- **500 Internal Server Error**: Informs users of server issues and redirects them to the homepage.
+- **Registered Users Only**: Users can create, update, and delete bookings through the upcoming events and my bookings pages.
+- **Feedback on Bookings**: Users receive instant feedback on the status of their bookings, being redirected to their bookings page with the selected event and no. of tickets.
+- In future development, booking confirmations will include email notifications. I would also like to provide a unique ticket number or QR code that can be shown to hostees in person. This would make sense alongside payment integration to provide the site legitimacy.
 
 ---
 
@@ -627,7 +596,7 @@ Custom error pages were designed for:
 The Django Admin Panel gives administrators full control over all user-generated content:
 
 - **Manage Users**: Admins can view and delete user accounts, which cascade-delete related bookings and events.
-- **Approve Content**: Admins approve event submissions and gallery uploads.
+- **Approve Content**: Admins approve event submissions.
 - **Handle Bookings**: Admins can manage bookings directly from the admin interface.
 
 ---
@@ -643,7 +612,9 @@ For future versions of MusicMatch, the following features will enhance its datab
 3. **Enhanced User Authentication**:
    - Integration with social login options (e.g., Google or Facebook) via Django AllAuth.
 4. **Advanced Search Filters**:
-   - Adding search options for events based on `music_genre`, `venue`, or `date`.
+   - Adding search options for events based on `music_genre`, or `date` as two examples.
+5. **Event Holder Event Management**:
+   - Adding further functions for event holders based on `no. of attendees` or `changing event details` as two examples.
 
 ## **Technologies & Languages Used**
 
@@ -945,6 +916,8 @@ The following resources, blogs, and tutorials were instrumental in helping me bu
   - [Save Method in Models](https://docs.djangoproject.com/en/stable/ref/models/instances/#saving-objects)
 - **Django UserCreationForm**: Learned how to create custom user registration forms.
   - [Django UserCreationForm](https://docs.djangoproject.com/en/stable/topics/auth/default/#django.contrib.auth.forms.UserCreationForm)
+- **Amy CI Course Instructor (Github)**: Provided insights on building Django projects like booking and scheduling systems, and I heavily relied upon her readme for my own.
+  - https://github.com/amylour/FreeFido_v2/blob/main/README.md
 - **ChatGPT**: Helped debug and optimize my code throughout various stages of the project.
 - **Microsoft Co-Pilot**: Helped debug and optimize my code throughout various stages of the project.
 
