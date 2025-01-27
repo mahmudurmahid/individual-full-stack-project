@@ -556,7 +556,7 @@ MusicMatch enables users to Create, Read, Update, and Delete data across various
 
 ### **Home Page**
 
-- **Unregistered Users**: A "Register" button is prominently displayed in the navbar section, inviting new users to join the community. They are also sent to register links when they click on any buttons in the hero and features sections.
+- **Unregistered Users**: A "Register" button is prominently displayed in the navbar section, inviting new users to join the community. They are also sent to register links when they click on any buttons in the hero and features sections. Any buttons or links on the page redirect them to register an account.
 - **Registered Users**: A "Logout" in the navbar replaces the login and the register function is replaced with their respective event holder or customer functions.
 
 ---
@@ -578,7 +578,7 @@ MusicMatch enables users to Create, Read, Update, and Delete data across various
 ### **Events**
 
 - **Unregistered Users**: Cannot view upcoming events, book tickets, create events, or see what events they have created
-- **Registered Users**: Have full access to book events and manage their bookings.
+- **Registered Users**: Have full access to book events and manage their bookings if a customer.
 - Event Holders can create, update, and delete events.
 
 ---
