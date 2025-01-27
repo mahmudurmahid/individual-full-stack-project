@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from .models import Event, Profile
 
-
 class RegisterForm(UserCreationForm):
     ROLE_CHOICES = (
         ('customer', 'Customer'),
@@ -71,7 +70,6 @@ class RegisterForm(UserCreationForm):
             user.save()
         return user
 
-
 class CustomLoginForm(forms.Form):
     username = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={
         'class': 'form-control',
@@ -90,7 +88,6 @@ class CustomLoginForm(forms.Form):
             if not user:
                 raise forms.ValidationError("Invalid email or password.")
         return self.cleaned_data
-
 
 class EventForm(forms.ModelForm):
     class Meta:

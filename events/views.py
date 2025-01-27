@@ -5,7 +5,6 @@ from django.utils.timezone import now, timedelta
 from .forms import RegisterForm, EventForm, CustomLoginForm
 from .models import Event, Booking
 
-
 def index(request):
     """Landing page view."""
     if request.user.is_authenticated:
@@ -14,7 +13,6 @@ def index(request):
         elif hasattr(request.user, 'profile') and request.user.profile.role == 'event_holder':
             return redirect('event_holder_home')  # Redirect event holders to their homepage
     return render(request, 'index.html')  # Show the landing page for non-logged-in users
-
 
 def register(request):
     """User registration view."""
@@ -37,7 +35,6 @@ def register(request):
     else:
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
-
 
 def login_view(request):
     """User login view."""
@@ -66,7 +63,6 @@ def login_view(request):
         form = CustomLoginForm()
     return render(request, 'login.html', {'form': form})
 
-
 def book_event(request, event_id):
     """View to handle event booking."""
     event = get_object_or_404(Event, id=event_id)
@@ -85,25 +81,21 @@ def book_event(request, event_id):
     print(f"Booking created: {booking}")
     return redirect('my_bookings')
 
-
 @login_required
 def logout_view(request):
     """User logout view."""
     logout(request)
     return redirect('login')
 
-
 @login_required
 def customer_home(request):
     """Home page for customers."""
     return render(request, 'customer_home.html')
 
-
 @login_required
 def event_holder_home(request):
     """Home page for event holders."""
     return render(request, 'event_holder_home.html')
-
 
 @login_required
 def create_event(request):
@@ -122,13 +114,11 @@ def create_event(request):
         form = EventForm()
     return render(request, 'create_event.html', {'form': form})
 
-
 @login_required
 def my_events(request):
     """View to display events created by the logged-in event holder."""
     events = Event.objects.filter(organizer=request.user)
     return render(request, 'my_events.html', {'my_events': events})
-
 
 @login_required
 def event_list(request):
@@ -150,7 +140,6 @@ def event_list(request):
 
     return render(request, 'event_list.html', {'events': events, 'genres': genres, 'cities': cities})
 
-
     # Filter logic
     events = Event.objects.all()
     if music_genre:
@@ -166,7 +155,6 @@ def event_list(request):
     cities = Event.objects.values_list('address', flat=True).distinct()
 
     return render(request, 'event_list.html', {'events': events, 'genres': genres, 'cities': cities})
-
 
 @login_required
 def my_bookings(request):
