@@ -532,7 +532,7 @@ MusicMatch enables users to Create, Read, Update, and Delete data across various
 | **Feature**  | **Create**                              | **Read** | **Update**               | **Delete**                                     |
 | ------------ | --------------------------------------- | -------- | ------------------------ | ---------------------------------------------- |
 | **Profile**  | Automatically created upon registration | Yes      | Yes                      | Deletion tied to account removal (Admins only) |
-| **Events**   | Yes (Event Holders only)                | Yes      | Yes (Event Holders only) | Yes (Event Holders only)                       |
+| **Events**   | Yes (Event Holders only)                | Yes      | Yes (Event Holders only) | No (Admin Holders only)                        |
 | **Bookings** | Yes                                     | Yes      | Yes                      | Yes                                            |
 | **Gallery**  | Yes (Upload photos)                     | Yes      | No                       | Yes                                            |
 
