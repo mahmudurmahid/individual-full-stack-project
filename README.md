@@ -964,20 +964,43 @@ The following resources, blogs, and tutorials were instrumental in helping me bu
 - **Django Documentation**: For understanding the MVT framework, working with forms, models, and user authentication.
   - [Django Documentation](https://docs.djangoproject.com/en/stable/)
 - **Bootstrap Documentation**: For creating a responsive and visually appealing front-end.
-  - [Bootstrap Docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
-- **Code Institute Resources**:
-  - Boutique Ado walkthroughs for concepts like deployment and CRUD functionality.
-  - Blog walkthroughs for Django basics, project structure, and testing.
-- **Adel Codes (YouTube)**: Provided insights on building Django projects like booking and scheduling systems.
-  - [Adel Codes](https://www.youtube.com/c/AdelCodes)
-- **Django Save Method in Models**: Helped me override the `save()` method in Django models.
-  - [Save Method in Models](https://docs.djangoproject.com/en/stable/ref/models/instances/#saving-objects)
-- **Django UserCreationForm**: Learned how to create custom user registration forms.
-  - [Django UserCreationForm](https://docs.djangoproject.com/en/stable/topics/auth/default/#django.contrib.auth.forms.UserCreationForm)
+  - [Bootstrap Documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- **Django Models and Relationships**: Helped with designing models and implementing ForeignKey and OneToOne relationships.
+  - [Django Models](https://docs.djangoproject.com/en/stable/topics/db/models/)
+- **Django Class-Based Views**: Used for implementing views efficiently.
+  - [Django Class-Based Views](https://docs.djangoproject.com/en/stable/topics/class-based-views/)
+- **Django Forms**: Provided guidance for creating forms and handling validations.
+  - [Django Forms](https://docs.djangoproject.com/en/stable/topics/forms/)
+- **Django Signal Handlers**: Used for creating `post_save` signals in the `Profile` model.
+  - [Django Signals](https://docs.djangoproject.com/en/stable/ref/signals/)
+- **Django QuerySet API**: For filtering, querying, and optimizing database interactions.
+  - [Django QuerySet API](https://docs.djangoproject.com/en/stable/ref/models/querysets/)
+- **Django Admin Customization**: Helped customize the admin panel for `Event`, `Booking`, and `Profile` models.
+  - [Django Admin Documentation](https://docs.djangoproject.com/en/stable/ref/contrib/admin/)
+- **Static and Media Files in Django**: For configuring static files and media uploads with Cloudinary.
+  - [Django Static Files](https://docs.djangoproject.com/en/stable/howto/static-files/)
+- **Cloudinary for Media Storage**: Used to set up media storage for user-uploaded files.
+  - [Cloudinary Documentation](https://cloudinary.com/documentation/django_integration)
+- **Whitenoise for Serving Static Files**: Simplified serving static files in production.
+  - [Whitenoise Documentation](http://whitenoise.evans.io/en/stable/)
+- **Heroku Deployment for Django Apps**: Helped with deploying the project to Heroku.
+  - [Deploying Django Apps on Heroku](https://devcenter.heroku.com/articles/django-app-configuration)
+- **PostgreSQL Setup for Django**: Assisted in configuring the PostgreSQL database for production.
+  - [Django PostgreSQL Setup](https://docs.djangoproject.com/en/stable/ref/databases/#postgresql-notes)
+- **Django AllAuth**: For exploring future social login integration.
+  - [Django AllAuth](https://django-allauth.readthedocs.io/en/stable/installation.html)
+- **Error Handling in Django**: Helped create custom error pages for 404 and 500 errors.
+  - [Custom Error Pages](https://docs.djangoproject.com/en/stable/howto/error-reporting/)
+- **StackOverflow**: For resolving various issues with Django settings, debugging, and deployment.
+  - [StackOverflow](https://stackoverflow.com/)
+- **W3Schools**: For basic HTML, CSS, and JavaScript references.
+  - [W3Schools](https://www.w3schools.com/)
+- **Lucidchart**: Used to create the Entity Relationship Diagram (ERD) to visualize database relationships.
+  - [Lucidchart](https://www.lucidchart.com/)
+- **ChatGPT**: Provided support for debugging, optimizing, and generating code throughout various stages of the project.
+- **Microsoft Co-Pilot**: Assisted with code suggestions, debugging, and optimization during development.
 - **Amy CI Course Instructor (Github)**: Provided insights on building Django projects like booking and scheduling systems, and I heavily relied upon her readme for my own.
-  - https://github.com/amylour/FreeFido_v2/blob/main/README.md
-- **ChatGPT**: Helped debug and optimize my code throughout various stages of the project.
-- **Microsoft Co-Pilot**: Helped debug and optimize my code throughout various stages of the project.
+  - [Amy’s Repository](https://github.com/amylour/FreeFido_v2/blob/main/README.md)
 
 ### Media
 
@@ -985,13 +1008,15 @@ The following resources provided the media and visuals used in this project:
 
 - **DALL-E**: For creating project-specific images and design elements.
 - **Balsamiq**: Used to design custom wireframes.
+- **Coolors**: Used for creating the color palette and ensuring accessibility.
 
 ### Acknowledgements
 
 - **Code Institute Community**: For feedback, guidance, and motivation during the development process.
 - **My Mentor (Amy)**: For their invaluable advice and constructive suggestions throughout the project.
 - **Friends and Family**: For assisting with testing and providing feedback to improve the site.
-- **Microsoft CoPilot**: For debugging and generating code suggestions.
+- **Perplexity AI**: Helped break down complex Django concepts and debug specific challenges in the project.
+- **Tutor Support**: For assisting with complex bugs, including deployment challenges, debugging logic, and understanding Django best practices.
 
 ### Additional Reading/Tutorials
 
@@ -1001,3 +1026,5 @@ The following resources provided the media and visuals used in this project:
   - [GeeksforGeeks Django](https://www.geeksforgeeks.org/django-tutorial/)
 - **Django for Beginners** by William S. Vincent: A beginner-friendly book for understanding Django.
   - [Django for Beginners](https://djangoforbeginners.com)
+- **W3Schools**: For guidance on HTML, CSS, and JavaScript concepts and syntax.
+  - [W3Schools](https://www.w3schools.com/)
