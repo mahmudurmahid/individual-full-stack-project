@@ -67,6 +67,7 @@
     - [Device Testing](#device-testing)
     - [Browser Compatibility](#browser-compatibility)
     - [Accessibility](#accessibility)
+    - [Solved Bugs](#solved-bugs)
     - [Known Bugs](#known-bugs)
 19. [Credits](#credits)
     - [Code](#code)
@@ -925,6 +926,24 @@ The site was checked for basic accessibility using browser dev tools to ensure p
 ![alt text](media/Screenshot_2025-01-27_at_14.07.35)
 
 While the WAVE Accessibility Evaluation tool has identified contrast errors and six additional alerts, the current design prioritizes maintaining the website's cohesive visual identity. These alerts do not indicate outright accessibility violations but rather areas for potential enhancement. Moving forward, we are committed to refining our design to better align with accessibility standards while preserving the platform’s aesthetic and branding goals. In the interim, users can leverage browser tools or assistive technologies to further optimize their experience.
+
+#### Solved Bugs
+
+As this was my first Django project incorporating database relationships, most bugs encountered were related to learning and understanding the framework. Below is a list of key bugs that required extended investigation or assistance to resolve:
+
+| **No.** | **Bug**                                                                                                       | **Solved?** | **Fix**                                                                                                                               | **Solution Credit**            |
+| ------- | ------------------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| 1       | CSRF token errors during form submissions in deployed Heroku app.                                             | Yes         | Correctly added `{% csrf_token %}` in all forms and ensured `CSRF_TRUSTED_ORIGINS` was configured in `settings.py`.                   | Django Docs                    |
+| 2       | Errors with the role-based redirection for users after login (customers vs. event holders).                   | Yes         | Adjusted the `login_view` to redirect users based on their role by querying the `Profile` model.                                      | ChatGPT + Django Documentation |
+| 3       | Static files (CSS and images) not loading correctly in the deployed app.                                      | Yes         | Configured `STATIC_ROOT` and ensured the `collectstatic` command was executed properly on deployment to Heroku.                       | StackOverflow + Django Docs    |
+| 4       | Bootstrap modal closing error in the browser console: `Uncaught TypeError: Cannot read properties of null...` | Yes         | Updated the Bootstrap library to the latest version and ensured modal scripts were correctly included in the base template.           | Bootstrap Documentation        |
+| 5       | Adding tickets beyond a specific number caused database errors for bookings.                                  | Yes         | Added validation in the `remove_ticket` and `add_ticket` views to ensure `ticket_count` stayed within a valid range (>= 0).           | ChatGPT                        |
+| 6       | Carousel images not displaying in the deployed version of the site.                                           | Yes         | Updated `MEDIA_URL` and ensured Cloudinary was configured correctly to store and serve image assets for deployment.                   | Cloudinary Documentation       |
+| 7       | Events created by a host not showing up under "My Events."                                                    | Yes         | Fixed the queryset in the `my_events` view to correctly filter events by the logged-in organizer.                                     | ChatGPT + Django Documentation |
+| 8       | Placeholder images not displaying on user profiles if no custom image was uploaded.                           | Yes         | Added a default image URL in the `Profile` model and updated the template logic to handle missing profile images gracefully.          | Django Docs                    |
+| 9       | Bookings not being deleted when a user was removed.                                                           | Yes         | Set `on_delete=models.CASCADE` for the `user` ForeignKey in the `Booking` model to ensure related bookings are deleted with the user. | Django Documentation           |
+
+These bugs provided an excellent learning opportunity and helped me deepen my understanding of Django, database management, and deployment challenges.
 
 #### Known Bugs
 
