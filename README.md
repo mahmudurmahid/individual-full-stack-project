@@ -548,15 +548,23 @@ MusicMatch enables users to Create, Read, Update, and Delete data across various
 - When logged in, customers will see exclusive functions for them, namely viewing all upcoming events and my bookings, whereas event holders will see my events and create an event
 - Registered users will see a "Logout" feature, which is hidden from unregistered users.
 
+![alt text](media/Header.png)
+
 #### **Footer**
 
 - The footer includes a simple copyright message to provide the site legitimacy.
+
+![alt text](media/Footer.png)
 
 ---
 
 ### **Home Page**
 
 - **Unregistered Users**: A "Register" button is prominently displayed in the navbar section, inviting new users to join the community. They are also sent to register links when they click on any buttons in the hero and features sections. Any buttons or links on the page redirect them to register an account.
+
+![alt text](media/Features_Home.png)
+![alt text](media/Hero_Home.png)
+
 - **Registered Users**: A "Logout" in the navbar replaces the login and the register function is replaced with their respective event holder or customer functions.
 
 ---
@@ -565,6 +573,9 @@ MusicMatch enables users to Create, Read, Update, and Delete data across various
 
 - Users must enter their username, email, first name, last name, their role, and password.
 - Users will be sent to their respective customer or event holder homepages after login.
+
+![alt text](media/Register1.png)
+![alt text](media/Login1.png)
 
 ---
 
@@ -581,6 +592,9 @@ MusicMatch enables users to Create, Read, Update, and Delete data across various
 - **Registered Users**: Have full access to book events and manage their bookings if a customer.
 - Event Holders can create, update, and delete events.
 
+![alt text](media/Upcoming_Events1.png)
+![alt text](media/Booked_Events1.png)
+
 ---
 
 ### **Bookings**
@@ -588,6 +602,9 @@ MusicMatch enables users to Create, Read, Update, and Delete data across various
 - **Registered Users Only**: Users can create, update, and delete bookings through the upcoming events and my bookings pages.
 - **Feedback on Bookings**: Users receive instant feedback on the status of their bookings, being redirected to their bookings page with the selected event and no. of tickets.
 - In future development, booking confirmations will include email notifications. I would also like to provide a unique ticket number or QR code that can be shown to hostees in person. This would make sense alongside payment integration to provide the site legitimacy.
+
+![alt text](media/Create_Event1.png)
+![alt text](My_Events1.png)
 
 ---
 
