@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", "fallback-secret-key")
 
 # Debug mode
-DEBUG = os.environ.get("DEBUG", "0") == "1"
+DEBUG = os.environ.get("DEBUG", "0") == "1" # Set to True for development and False for production
 
 # Allowed hosts
 ALLOWED_HOSTS = ["localhost", "music-match-483fb192c3d8.herokuapp.com"]
