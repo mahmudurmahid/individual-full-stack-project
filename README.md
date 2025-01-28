@@ -616,6 +616,8 @@ The Django Admin Panel gives administrators full control over all user-generated
 - **Approve Content**: Admins approve event submissions.
 - **Handle Bookings**: Admins can manage bookings directly from the admin interface.
 
+![alt text](media/Admin_Panel.png)
+
 ---
 
 ### **Future Development**
