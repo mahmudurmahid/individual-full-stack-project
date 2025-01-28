@@ -43,7 +43,7 @@
 12. [Feature Showcase](#feature-showcase)
     - [Header/Navigation & Footer](#headernavigation--footer)
     - [Home Page](#home-page)
-    - [Registration/Sign-Up](#registration/sign-up)
+    - [Registration/Sign-Up](#registration-or-sign-up)
     - [Profile](#profile)
     - [Events](#events)
     - [Bookings](#bookings)
@@ -62,18 +62,17 @@
     - [Using AI to Create Automated Unit Tests](#using-ai-to-create-automated-unit-tests)
     - [Reflection on AI’s Role in the Development Process](#reflection-on-ais-role-in-the-development-process)
 18. [Testing](#testing)
-
-- [Validation](#validation)
-- [Manual Testing](#manual-testing)
-- [Device Testing](#device-testing)
-- [Browser Compatibility](#browser-compatibility)
-- [Accessibility](#accessibility)
-
+    - [User Input/Form Validation](#user-inputform-validation)
+    - [Testing User Stories](#testing-user-stories)
+    - [Device Testing](#device-testing)
+    - [Browser Compatibility](#browser-compatibility)
+    - [Accessibility](#accessibility)
+    - [Known Bugs](#known-bugs)
 19. [Credits](#credits)
     - [Code](#code)
     - [Media](#media)
     - [Acknowledgements](#acknowledgements)
-    - [Additional Reading/Tutorials](#additional-readingtutorials)
+    - [Additional Reading/Tutorials](#additional-reading-and-tutorials)
 
 ---
 
@@ -868,14 +867,42 @@ No errors or warnings were detected in the `style.css` file.
 
 ### Manual Testing
 
-#### User Stories
+### User Input/Form Validation
 
-All user stories were tested manually by performing the following actions:
+Testing was carried out on desktop using a Chrome browser to ensure all forms accept the intended input, process it correctly, and provide appropriate feedback to users.
 
-- **Event Creation:** Verified that event holders can successfully create new events with valid data.
-- **Event Booking:** Confirmed that users can book events without duplicate bookings.
-- **Login and Registration:** Tested login, registration, and "Remember Me" functionality.
-- **Filters:** Checked that filtering events by genre, city, and date works correctly.
+| **Feature**                | **Tested?** | **User Input Required**                          | **User Feedback Provided**                                                                                              | **Pass/Fail** | **Fix** |
+| -------------------------- | ----------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- | ------------- | ------- |
+| **Navbar**                 | Yes         | Click links in navbar                            | Navbar links take users to the intended locations (e.g., Home, Events, Bookings). Tooltips provide extra accessibility. | Pass          | -       |
+| **Home Page Hero Section** | Yes         | Click buttons on hero section                    | Buttons redirect users to the login or events pages.                                                                    | Pass          | -       |
+| **Register Form**          | Yes         | Email, username, password, first/last name, role | Validation for empty fields, email format, password length, and password confirmation provided.                         | Pass          | -       |
+| **Login Form**             | Yes         | Email/username and password                      | Displays errors for incorrect credentials or empty fields.                                                              | Pass          | -       |
+| **Create Event Form**      | Yes         | Text, date, dropdown for genre                   | Validation for required fields, invalid date input, and missing details.                                                | Pass          | -       |
+| **Filter Events Form**     | Yes         | Dropdown selections for genre, city, and date    | Updates event list dynamically based on filter criteria or shows "No events found" message.                             | Pass          | -       |
+| **Book Event Button**      | Yes         | Click "Book Now" button                          | Confirms booking and redirects user to "My Bookings" page.                                                              | Pass          | -       |
+| **My Bookings Page**       | Yes         | Add/Remove ticket buttons                        | Users can adjust ticket count. Shows "Booking updated" message.                                                         | Pass          | -       |
+| **Delete Booking Button**  | Yes         | Click "Delete" button                            | Prompts user for confirmation before deleting the booking.                                                              | Pass          | -       |
+| **Edit Profile Form**      | Yes         | Update role or venue name                        | Updates user profile and redirects to home page with success message.                                                   | Pass          | -       |
+| **Logout Button**          | Yes         | Click "Logout" button                            | Logs user out and redirects to login page.                                                                              | Pass          | -       |
+
+---
+
+### Testing User Stories
+
+User stories were documented in the project board and tested on various screen sizes using Chrome DevTools. Multiple test accounts (e.g., `TestUser1`, `EventHolder1`) were created to ensure comprehensive coverage.
+
+| **User Story**                | **Acceptance Criteria Met?** | **Tested?** | **Response**                                                                                      | **Pass/Fail** | **Fix** |
+| ----------------------------- | ---------------------------- | ----------- | ------------------------------------------------------------------------------------------------- | ------------- | ------- |
+| **#1 - Register as a User**   | Yes                          | Yes         | User can register as a "Customer" or "Event Holder." Validation feedback provided for all inputs. | Pass          | -       |
+| **#2 - Log in as a User**     | Yes                          | Yes         | User can log in using valid credentials. Errors displayed for invalid inputs.                     | Pass          | -       |
+| **#3 - View Events List**     | Yes                          | Yes         | Events list shows upcoming events with filters for genre, city, and date.                         | Pass          | -       |
+| **#4 - Book an Event**        | Yes                          | Yes         | Booking is added, and the user is redirected to the "My Bookings" page.                           | Pass          | -       |
+| **#5 - Manage Bookings**      | Yes                          | Yes         | User can add/remove tickets or delete bookings.                                                   | Pass          | -       |
+| **#6 - Create an Event**      | Yes                          | Yes         | Event Holder can create events with all required details.                                         | Pass          | -       |
+| **#8 - Logout Functionality** | Yes                          | Yes         | User is logged out and redirected to the login page.                                              | Pass          | -       |
+| **#9 - Responsive Design**    | Yes                          | Yes         | Website is fully functional and accessible on desktop, tablet, and mobile screens.                | Pass          | -       |
+
+---
 
 #### Device Testing
 
@@ -898,6 +925,16 @@ The site was checked for basic accessibility using browser dev tools to ensure p
 ![alt text](media/Screenshot_2025-01-27_at_14.07.35)
 
 While the WAVE Accessibility Evaluation tool has identified contrast errors and six additional alerts, the current design prioritizes maintaining the website's cohesive visual identity. These alerts do not indicate outright accessibility violations but rather areas for potential enhancement. Moving forward, we are committed to refining our design to better align with accessibility standards while preserving the platform’s aesthetic and branding goals. In the interim, users can leverage browser tools or assistive technologies to further optimize their experience.
+
+#### Known Bugs
+
+1. **Placeholder Text Issue on Booked Events Page**
+   - **Description:** On the `booked_events.html` page, the placeholder `{{ booking.event.city }}` is displayed instead of the actual city name for a booked event.
+   - **Impact:** This affects the display of the event address, which may confuse users.
+   - **Root Cause:** The placeholder text is not being correctly replaced with the actual value from the database. This could be due to a missing or incorrect reference in the context data passed to the template.
+   - **Plan to Fix:** I will review the `booked_events` view and ensure the `city` field is properly included in the context. Additionally, I will test the template to confirm the variable is correctly rendered in all scenarios.
+
+---
 
 ## Credits
 
